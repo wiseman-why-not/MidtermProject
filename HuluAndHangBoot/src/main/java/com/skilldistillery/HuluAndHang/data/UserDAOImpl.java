@@ -22,12 +22,22 @@ public class UserDAOImpl implements UserDAO {
 
 		User user = em.find(User.class, id);
 		
-		
-		System.out.println("User info: " + user.getFirstName() + user.getLastName() + user.getUsername()
-				+ user.getDescription() + user.getPhoneNumber() + user.getAge());
 
 		return user;
 
+	}
+
+	@Override
+	public User findByLogin(String username, String password) {
+		
+		String query = "SELECT user FROM User user WHERE user.username = :username AND user.userPassword = :password";
+		
+		User user = em.createQuery(query, User.class)
+					  .setParameter("username", username)
+					  .setParameter("userPassword", password)
+					  .getSingleResult();
+		
+		return user;
 	}
 
 }
