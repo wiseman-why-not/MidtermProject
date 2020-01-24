@@ -25,6 +25,11 @@ public class UserController {
 		}
 	}
 	
+	@RequestMapping(path = "create.do")
+	public String createUser(){
+		return "createUser";
+	}
+	
 	@RequestMapping(path = "login.do")
 	public String checkLoginInfo(String password, String userName,  HttpSession session){
 		User user = dao.findByLogin(userName, password);
