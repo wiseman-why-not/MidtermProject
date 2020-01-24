@@ -9,6 +9,10 @@
     </provider>
     
     <!-- tables go here -->
+    <class>com.skilldistillery.HuluAndHang.entities.Content</class>
+    <class>com.skilldistillery.HuluAndHang.entities.Episode</class>
+    <class>com.skilldistillery.HuluAndHang.entities.Genre</class>
+    <class>com.skilldistillery.HuluAndHang.entities.Season</class>
     <class>com.skilldistillery.HuluAndHang.entities.User</class>
 
 
