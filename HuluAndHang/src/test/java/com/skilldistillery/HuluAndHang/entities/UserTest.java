@@ -1,7 +1,7 @@
 package com.skilldistillery.HuluAndHang.entities;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -11,17 +11,18 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class UserTest {
-	
+
 	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("midterm");
 	private static EntityManager em;
 	private static User user;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-		
+
 	}
 
 	@AfterAll
@@ -31,7 +32,7 @@ class UserTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		user = em.find(User.class, 1);
+		user = em.find(User.class, 4);
 	}
 
 	@AfterEach
@@ -44,4 +45,10 @@ class UserTest {
 		assertTrue(true);
 	}
 
+	@DisplayName("Testing User entity mappings")
+	@Test
+	public void testCustomer1() {
+		assertEquals("skyler", user.getUsername());
+
+	}
 }
