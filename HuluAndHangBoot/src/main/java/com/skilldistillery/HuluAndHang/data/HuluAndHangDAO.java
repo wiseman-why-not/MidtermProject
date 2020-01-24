@@ -1,5 +1,5 @@
 package com.skilldistillery.HuluAndHang.data;
 
-public class HuluAndHangDAO {
-
+public interface HuluAndHangDAO {
+	public void find();
 }
