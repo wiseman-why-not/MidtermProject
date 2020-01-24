@@ -29,10 +29,11 @@ CREATE TABLE IF NOT EXISTS `user` (
   `last_name` VARCHAR(45) NULL,
   `email` VARCHAR(100) NULL,
   `age` INT NULL,
-  `personal_description` VARCHAR(1000) NULL,
-  `phone` INT NULL,
-  `create_date` DATETIME NULL,
-  `update_date` DATETIME NULL,
+  `personal_description` TEXT NULL,
+  `phone` BIGINT(20) NULL,
+  `create_date` TIMESTAMP NULL,
+  `update_date` TIMESTAMP NULL,
+  `admin_privledges` TINYINT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `username_UNIQUE` (`username` ASC),
   UNIQUE INDEX `password_UNIQUE` (`password` ASC))
@@ -47,12 +48,12 @@ DROP TABLE IF EXISTS `content` ;
 CREATE TABLE IF NOT EXISTS `content` (
   `id` INT NOT NULL,
   `title` VARCHAR(45) NULL,
-  `description` VARCHAR(1000) NULL,
+  `description` TEXT NULL,
   `img_url` VARCHAR(100) NULL,
   `trailer_url` VARCHAR(100) NULL,
-  `format` VARCHAR(45) NULL,
-  `release_date` DATE NULL,
-  `create_date` VARCHAR(45) NULL,
+  `format` TINYINT NULL,
+  `release_date` YEAR(4) NULL,
+  `create_date` TIMESTAMP NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -198,8 +199,52 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `midterm_db`;
-INSERT INTO `user` (`id`, `username`, `password`, `active`, `first_name`, `last_name`, `email`, `age`, `personal_description`, `phone`, `create_date`, `update_date`) VALUES (1, 'steve', 'steve', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `user` (`id`, `username`, `password`, `active`, `first_name`, `last_name`, `email`, `age`, `personal_description`, `phone`, `create_date`, `update_date`) VALUES (2, 'user2', 'user', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `user` (`id`, `username`, `password`, `active`, `first_name`, `last_name`, `email`, `age`, `personal_description`, `phone`, `create_date`, `update_date`, `admin_privledges`) VALUES (1, 'steve', 'steve', 1, 'steve', 'merwin', 'stevegmerwin@gmail.com', 45, 'the best', 8177579034, NULL, NULL, NULL);
+INSERT INTO `user` (`id`, `username`, `password`, `active`, `first_name`, `last_name`, `email`, `age`, `personal_description`, `phone`, `create_date`, `update_date`, `admin_privledges`) VALUES (2, 'marcus', 'marcus123', 1, 'marcus', 'wiseman', 'wiseman@yahoo.com', 21, 'the slow one', 3033033033, NULL, NULL, NULL);
+INSERT INTO `user` (`id`, `username`, `password`, `active`, `first_name`, `last_name`, `email`, `age`, `personal_description`, `phone`, `create_date`, `update_date`, `admin_privledges`) VALUES (3, 'inzu', 'inzu123', 1, 'gabriel', 'inzurriaga', 'inzu@yahoo.com', 23, 'the sexy one', 9090909090, NULL, NULL, NULL);
+INSERT INTO `user` (`id`, `username`, `password`, `active`, `first_name`, `last_name`, `email`, `age`, `personal_description`, `phone`, `create_date`, `update_date`, `admin_privledges`) VALUES (4, 'skyler', 'skyler123', 1, 'skyler', 'sapp', 'sapp@yahoo.com', 89, 'the old one', 877788787, NULL, NULL, NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `content`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `midterm_db`;
+INSERT INTO `content` (`id`, `title`, `description`, `img_url`, `trailer_url`, `format`, `release_date`, `create_date`) VALUES (1, 'Joker', 'During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City while becoming an infamous psychopathic crime figure.', '/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg', 't433PEQGErc', 1, 2000, '1970-01-01 00:00:02');
+INSERT INTO `content` (`id`, `title`, `description`, `img_url`, `trailer_url`, `format`, `release_date`, `create_date`) VALUES (2, 'Star Wars: The Rise of Skywalker', 'The surviving Resistance faces the First Order once again as the journey of Rey, Finn and Poe Dameron continues. With the power and knowledge of generations behind them, the final battle begins.', '/db32LaOibwEliAmSL2jjDF6oDdj.jpg', 'adzYW5DZoWs', 1, 2000, '1970-01-01 00:00:02');
+INSERT INTO `content` (`id`, `title`, `description`, `img_url`, `trailer_url`, `format`, `release_date`, `create_date`) VALUES (3, 'Monty Python and the Holy Grail', 'King Arthur, accompanied by his squire, recruits his Knights of the Round Table, including Sir Bedevere the Wise, Sir Lancelot the Brave, Sir Robin the Not-Quite-So-Brave-As-Sir-Lancelot and Sir Galahad the Pure. On the way, Arthur battles the Black Knight who, despite having had all his limbs chopped off, insists he can still fight. They reach Camelot, but Arthur decides not  to enter, as \\\"it is a silly place\\\".', '/8AVb7tyxZRsbKJNOTJHQZl7JYWO.jpg', 'RDM75-oXGmQ', 1, 2000, '1970-01-01 00:00:02');
+INSERT INTO `content` (`id`, `title`, `description`, `img_url`, `trailer_url`, `format`, `release_date`, `create_date`) VALUES (4, 'The Last Black Man in San Francisco', 'Jimmie Fails dreams of reclaiming the Victorian home his grandfather built in the heart of San Francisco. Joined on his quest by his best friend Mont, Jimmie searches for belonging in a rapidly changing city that seems to have left them behind.', '/ow9zjibNrz5TYVZ6cqwmvCR1YX1.jpg', 'C0FnJDhY9-0', 1, 2000, '1970-01-01 00:00:02');
+INSERT INTO `content` (`id`, `title`, `description`, `img_url`, `trailer_url`, `format`, `release_date`, `create_date`) VALUES (5, 'Point Break', 'In Los Angeles, a gang of bank robbers call themselves The Ex-Presidents commit their crimes while wearing masks of Reagan, Carter, Nixon and Johnson. The F.B.I. believes that the members of the gang could be surfers and send young agent Johnny Utah undercover at the beach to mix with the surfers and gather information.', '/eGSfqknufcsXmM2Rb59H9SiNd4T.jpg', 'UsbuQ-jg014', 1, 2000, '1970-01-01 00:00:02');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `genre`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `midterm_db`;
+INSERT INTO `genre` (`id`, `name`) VALUES (1, 'Action');
+INSERT INTO `genre` (`id`, `name`) VALUES (2, 'Adventure');
+INSERT INTO `genre` (`id`, `name`) VALUES (3, 'Animation');
+INSERT INTO `genre` (`id`, `name`) VALUES (4, 'Comedy');
+INSERT INTO `genre` (`id`, `name`) VALUES (5, 'Crime');
+INSERT INTO `genre` (`id`, `name`) VALUES (6, 'Documentary');
+INSERT INTO `genre` (`id`, `name`) VALUES (7, 'Drama');
+INSERT INTO `genre` (`id`, `name`) VALUES (8, 'Family');
+INSERT INTO `genre` (`id`, `name`) VALUES (9, 'Fantasy');
+INSERT INTO `genre` (`id`, `name`) VALUES (10, 'History');
+INSERT INTO `genre` (`id`, `name`) VALUES (11, 'Horror');
+INSERT INTO `genre` (`id`, `name`) VALUES (12, 'Music');
+INSERT INTO `genre` (`id`, `name`) VALUES (13, 'Mystery');
+INSERT INTO `genre` (`id`, `name`) VALUES (14, 'Romance');
+INSERT INTO `genre` (`id`, `name`) VALUES (15, 'Science Fiction');
+INSERT INTO `genre` (`id`, `name`) VALUES (16, 'TV Movie');
+INSERT INTO `genre` (`id`, `name`) VALUES (17, 'Thriller');
+INSERT INTO `genre` (`id`, `name`) VALUES (18, 'War');
+INSERT INTO `genre` (`id`, `name`) VALUES (19, 'Western');
 
 COMMIT;
 
