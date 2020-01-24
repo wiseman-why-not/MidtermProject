@@ -1,5 +1,7 @@
 package com.skilldistillery.HuluAndHang.controllers;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,17 +17,21 @@ public class UserController {
 	private UserDAO dao;
 	
 	@RequestMapping(path = "/")
-	public String login(){
-		return "index";
+	public String login(HttpSession session){
+		if(session.getAttribute("user") == null) {
+			return "index";
+		} else {
+			return "home";
+		}
 	}
 	
 	@RequestMapping(path = "login.do")
-	public String checkLoginInfo(String password, String userName, Model model){
+	public String checkLoginInfo(String password, String userName,  HttpSession session){
 		User user = dao.findByLogin(userName, password);
 		if(user == null) {
 			return "index";
 		} else {
-			model.addAttribute("user", user);	
+			session.setAttribute("user", user);
 			return "home";
 		}
 	}

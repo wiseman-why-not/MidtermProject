@@ -29,15 +29,15 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public User findByLogin(String username, String password) {
-		
 		String query = "SELECT user FROM User user WHERE user.username = :username AND user.userPassword = :password";
-		
-		User user = em.createQuery(query, User.class)
+		try {
+			return em.createQuery(query, User.class)
 					  .setParameter("username", username)
-					  .setParameter("userPassword", password)
+					  .setParameter("password", password)
 					  .getSingleResult();
-		
-		return user;
+		} catch(Exception e) {
+			return null;
+		}
 	}
 
 }
