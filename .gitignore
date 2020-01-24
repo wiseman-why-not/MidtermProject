@@ -3,6 +3,7 @@ Servers
 target
 build
 bin
+.classpath
 .metadata
 # .settings
 .gradle
