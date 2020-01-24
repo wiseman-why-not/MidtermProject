@@ -30,7 +30,7 @@ public class SeaonTest {
 	}
 	
 	@Test
-	@DisplayName("test episode mapping")
+	@DisplayName("test season mapping")
 	void test1() {
 		season = new Season();
 		season.setId(1);
