@@ -11,6 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+
 public class GenreTest {
 	
 	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("midterm");
@@ -31,7 +32,7 @@ public class GenreTest {
 	}
 	
 	@Test
-	@DisplayName("test episode mapping")
+	@DisplayName("test1 genre mapping")
 	void test1() {
 		//genre = new Genre();
 		//genre.setId(1);
@@ -40,11 +41,11 @@ public class GenreTest {
 		//System.out.println(genre.toString());	
 		//em.persist(genre);
 		genre = em.find(Genre.class, 1);
-		System.out.println("find genre");
-		System.out.println(genre.toString());
+		//System.out.println("find genre");
+		//System.out.println(genre.toString());
 		assertEquals("Action", genre.getName());
-		assertEquals(1, genre.getId());
-		
+		assertEquals(1, genre.getId());		
 	}
+	
 
 }
