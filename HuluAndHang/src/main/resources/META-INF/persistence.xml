@@ -10,8 +10,10 @@
     
     <!-- tables go here -->
     <class>com.skilldistillery.HuluAndHang.entities.User</class>
-
-
+    <class>com.skilldistillery.HuluAndHang.entities.Genre</class>
+    <class>com.skilldistillery.HuluAndHang.entities.Episode</class>
+    <class>com.skilldistillery.HuluAndHang.entities.Content</class>
+    <class>com.skilldistillery.HuluAndHang.entities.Season</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/midterm_db?useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=MST" />
       <property name="javax.persistence.jdbc.user" value="steve"/>
@@ -33,3 +35,4 @@
     </properties>
   </persistence-unit>
 </persistence>
+
