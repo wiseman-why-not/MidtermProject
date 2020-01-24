@@ -38,4 +38,10 @@ public class GenreDAOImpl implements GenreDAO{
 		return genres;
 	}
 
+	public Genre findByName(String name) {
+		// TODO Auto-generated method stub
+		String jpql ="select g from Genre g";
+		return null;
+	}
+
 }
