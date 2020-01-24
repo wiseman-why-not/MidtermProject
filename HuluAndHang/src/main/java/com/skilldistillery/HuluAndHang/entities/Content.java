@@ -1,12 +1,16 @@
 package com.skilldistillery.HuluAndHang.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -42,6 +46,28 @@ public class Content {
 	@Column(name="create_date")
 	@CreationTimestamp
 	private LocalDateTime createDate;
+	
+	public LocalDateTime getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(LocalDateTime createDate) {
+		this.createDate = createDate;
+	}
+
+	public List<Genre> getGenres() {
+		return genres;
+	}
+
+	public void setGenres(List<Genre> genres) {
+		this.genres = genres;
+	}
+
+	@ManyToMany
+	@JoinTable(name="genre_content",
+	joinColumns = @JoinColumn(name = "content_id"),
+	inverseJoinColumns=@JoinColumn(name="genre_id"))
+	private List<Genre> genres;
 	
 	// CONSTRUCTORS
 	
