@@ -248,3 +248,25 @@ INSERT INTO `genre` (`id`, `name`) VALUES (19, 'Western');
 
 COMMIT;
 
+
+-- -----------------------------------------------------
+-- Data for table `genre_content`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `midterm_db`;
+INSERT INTO `genre_content` (`content_id`, `genre_id`) VALUES (1, 5);
+INSERT INTO `genre_content` (`content_id`, `genre_id`) VALUES (1, 7);
+INSERT INTO `genre_content` (`content_id`, `genre_id`) VALUES (1, 17);
+INSERT INTO `genre_content` (`content_id`, `genre_id`) VALUES (2, 1);
+INSERT INTO `genre_content` (`content_id`, `genre_id`) VALUES (2, 2);
+INSERT INTO `genre_content` (`content_id`, `genre_id`) VALUES (2, 9);
+INSERT INTO `genre_content` (`content_id`, `genre_id`) VALUES (3, 2);
+INSERT INTO `genre_content` (`content_id`, `genre_id`) VALUES (3, 4);
+INSERT INTO `genre_content` (`content_id`, `genre_id`) VALUES (3, 9);
+INSERT INTO `genre_content` (`content_id`, `genre_id`) VALUES (4, 7);
+INSERT INTO `genre_content` (`content_id`, `genre_id`) VALUES (5, 1);
+INSERT INTO `genre_content` (`content_id`, `genre_id`) VALUES (5, 5);
+INSERT INTO `genre_content` (`content_id`, `genre_id`) VALUES (5, 17);
+
+COMMIT;
+
