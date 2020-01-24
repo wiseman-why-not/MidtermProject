@@ -6,12 +6,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.skilldistillery.HuluAndHang.data.HuluAndHangDAO;
+import com.skilldistillery.HuluAndHang.data.UserDAO;
 import com.skilldistillery.HuluAndHang.entities.User;
 
 @Controller
 public class UserController {
 	@Autowired
-	private HuluAndHangDAO dao;
+	private UserDAO dao;
 	
 	@RequestMapping(path = "/")
 	public String login(){
@@ -20,8 +21,7 @@ public class UserController {
 	
 	@RequestMapping(path = "home.do")
 	public String home(Model model){
-		User user = null;
-		model.addAttribute("user", user);
+		model.addAttribute("user", dao.find(1));
 		return "home";
 	}
 }
