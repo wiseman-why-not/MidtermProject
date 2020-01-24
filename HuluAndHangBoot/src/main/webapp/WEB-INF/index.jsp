@@ -10,24 +10,34 @@
 		<link rel="stylesheet" href="./css/main.css">
 		<link rel="stylesheet" href="./css/homeStyle.css">
 	</head>
-	<body id = "indexPage">	
+	<body id="indexPage">	
 		<header>
 			<h1>Hulu&Hang</h1>
+				<nav>
+					<a href="home.do">Home</a>
+					<a href="movie.do">Movie</a>
+					<a href="genre.do">Genre</a>
+				</nav>
 		</header>
-		<main>
-			<section>
-				<form>
+		<main class="container">
+			<section class="login">
+				<form action="login.do" method="post">
 					<h2>Log in</h2>
-					<div class="field">
-	    				<input type="text" name="userName" id="userName">
-	    				<label for="userName">userName</label>
+					<div class="form-group">
+	    				<label for="userName">UserName</label>
+	    				<input type="text" name="userName" id="userName" class="form-control">
   					</div>
-  					<div class="field">
-    					<input type="password" name="password" id="password">
+  					<div class="form-group">
     					<label for="password">Password</label>
+    					<input type="password" name="password" id="password" class="form-control">
   					</div>
+  					<input type="submit" value="Log In"/>
 				</form>
-				<canvas></canvas>
+			</section>
+			<canvas></canvas>
+			<section>
+				<h2>description</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec posuere tellus. Fusce varius urna ante, quis venenatis sapien fringilla non. Nam tempor, eros fermentum finibus sagittis, nibh urna commodo metus, id fermentum purus libero bibendum mi. Nullam nec purus fermentum, molestie lorem id, ornare lorem. Donec aliquet nisl sed sagittis dictum. Donec imperdiet tempor dui. Phasellus non justo a leo commodo vestibulum quis et purus.</p>
 			</section>
 		</main>
 		<footer>

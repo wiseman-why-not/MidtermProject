@@ -6,17 +6,19 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
-import com.skilldistillery.HuluAndHang.entities.User;
+import com.skilldistillery.HuluAndHang.entities.Content;
 
 @Service
 @Transactional
-public class HuluAndHangDAOImpl implements HuluAndHangDAO {
-	
+public class ContentDAOImpl implements ContentDAO{
+
 	@PersistenceContext
 	private EntityManager em;
 	
-	public void find() {
-	 System.out.println(em.find(User.class, 1));
+	@Override
+	public Content findById(int id) {
+
+		return em.find(Content.class, id);
 	}
 
 }

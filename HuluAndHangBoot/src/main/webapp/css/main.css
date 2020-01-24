@@ -1,0 +1,12 @@
+body {
+	background-color: #202125;
+	position: relative;
+}
+
+header {
+	background-color: #02B075;
+	color: #ffffff;
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
