@@ -28,11 +28,11 @@ public class User {
 
 	@Column(name = "phone")
 	private Long phoneNumber;
-	
+
 	private String email;
-	
+
 	private Integer age;
-	
+
 	@Column(name = "personal_description")
 	private String description;
 
@@ -68,14 +68,6 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	public String getUserName() {
-		return username;
-	}
-
-	public void setUserName(String userName) {
-		this.username = userName;
-	}
-
 	public String getUserPassword() {
 		return userPassword;
 	}
@@ -102,12 +94,8 @@ public class User {
 
 	public void setId(Integer id) {
 		this.id = id;
-		
-	}
-	
-	
 
-	// toString
+	}
 
 	public String getUsername() {
 		return username;
@@ -148,6 +136,8 @@ public class User {
 	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
 	}
+
+	// toString
 
 	@Override
 	public String toString() {
