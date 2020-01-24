@@ -19,6 +19,17 @@ public class UserController {
 		return "index";
 	}
 	
+	@RequestMapping(path = "login.do")
+	public String checkLoginInfo(String password, String userName, Model model){
+		User user = dao.findByLogin(userName, password);
+		if(user == null) {
+			return "index";
+		} else {
+			model.addAttribute("user", user);	
+			return "home";
+		}
+	}
+	
 	@RequestMapping(path = "home.do")
 	public String home(Model model){
 		model.addAttribute("user", dao.find(1));
