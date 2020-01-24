@@ -12,7 +12,6 @@ import com.skilldistillery.HuluAndHang.entities.User;
 @Service
 @Transactional
 public class UserDAOImpl implements UserDAO {
-	
 
 	@PersistenceContext
 	private EntityManager em;
@@ -21,7 +20,6 @@ public class UserDAOImpl implements UserDAO {
 	public User find(int id) {
 
 		User user = em.find(User.class, id);
-		
 
 		return user;
 
@@ -31,12 +29,41 @@ public class UserDAOImpl implements UserDAO {
 	public User findByLogin(String username, String password) {
 		String query = "SELECT user FROM User user WHERE user.username = :username AND user.userPassword = :password";
 		try {
-			return em.createQuery(query, User.class)
-					  .setParameter("username", username)
-					  .setParameter("password", password)
-					  .getSingleResult();
-		} catch(Exception e) {
+			return em.createQuery(query, User.class).setParameter("username", username)
+					.setParameter("password", password).getSingleResult();
+		} catch (Exception e) {
 			return null;
+		}
+	}
+
+	public User createUser(User user) {
+
+		em.persist(user);
+
+		return user;
+	}
+
+	public boolean updateUser(User user) {
+
+		User managedUser = em.find(User.class, user.getId());
+
+		try {
+
+			managedUser.setUsername(user.getUsername());
+			managedUser.setAge(user.getAge());
+			managedUser.setDescription(user.getDescription());
+			managedUser.setEmail(user.getEmail());
+			managedUser.setFirstName(user.getFirstName());
+			managedUser.setLastName(user.getLastName());
+			managedUser.setPhoneNumber(user.getPhoneNumber());
+			managedUser.setUserPassword(user.getUserPassword());
+			managedUser.setIsActive(user.getIsActive());
+			return true;
+
+		}
+
+		catch (Exception e) {
+			return false;
 		}
 	}
 
