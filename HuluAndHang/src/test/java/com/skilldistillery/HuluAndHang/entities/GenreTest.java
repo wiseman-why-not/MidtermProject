@@ -17,6 +17,7 @@ public class GenreTest {
 	private EntityManager em;
 	private Genre genre;
 	
+	
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
@@ -32,18 +33,18 @@ public class GenreTest {
 	@Test
 	@DisplayName("test episode mapping")
 	void test1() {
-		genre = new Genre();
-		genre.setId(1);
-		genre.setName("testing");
-		System.out.println("before genre persist");
-		System.out.println(genre.toString());	
-		/*em.persist(episode);
-		episode = em.find(Episode.class, 1);
-		System.out.println("after persist");
-		System.out.println(episode.toString());
-		assertEquals("testing", episode.getTitle());
-		assertEquals(1, episode.getSeasonId());
-		assertEquals(1, episode.getId());*/
+		//genre = new Genre();
+		//genre.setId(1);
+		//genre.setName("testing");
+		//System.out.println("before genre persist");
+		//System.out.println(genre.toString());	
+		//em.persist(genre);
+		genre = em.find(Genre.class, 1);
+		System.out.println("find genre");
+		System.out.println(genre.toString());
+		assertEquals("Action", genre.getName());
+		assertEquals(1, genre.getId());
+		
 	}
 
 }

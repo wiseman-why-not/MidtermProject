@@ -1,10 +1,14 @@
 package com.skilldistillery.HuluAndHang.entities;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 public class Content {
@@ -22,40 +26,47 @@ public class Content {
 	private String description;
 	
 	
-	@Column(name="image_url")
+	@Column(name="img_url")
 	private String imageUrl;
 	
 	@Column(name="trailer_url")
 	private String trailerUrl;
 	
-	@Column(name="imdb_url")
-	private String imdbrUrl;
-	
 	@Column(name="format")
 	private boolean format;
+	
+	@Column(name="release_date")
+	private Integer releaseDate;
 
 	
+	@Column(name="create_date")
+	@CreationTimestamp
+	private LocalDateTime createDate;
+	
 	// CONSTRUCTORS
+	
 	
 	public Content() {
 		super();
 	}
 
-	public Content(int id, String title, String description, String imageUrl, String trailerUrl, String imdbrUrl,
-			boolean format) {
+	public Content(int id, String title, String description, String imageUrl, String trailerUrl, boolean format,
+			Integer releaseDate, LocalDateTime createDate) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.description = description;
 		this.imageUrl = imageUrl;
 		this.trailerUrl = trailerUrl;
-		this.imdbrUrl = imdbrUrl;
 		this.format = format;
+		this.releaseDate = releaseDate;
+		this.createDate = createDate;
 	}
 
 	// METHODS 
 	
 	// GETTERS AND SETTERS
+	
 	public int getId() {
 		return id;
 	}
@@ -96,14 +107,6 @@ public class Content {
 		this.trailerUrl = trailerUrl;
 	}
 
-	public String getImdbrUrl() {
-		return imdbrUrl;
-	}
-
-	public void setImdbrUrl(String imdbrUrl) {
-		this.imdbrUrl = imdbrUrl;
-	}
-
 	public boolean isFormat() {
 		return format;
 	}
@@ -112,17 +115,24 @@ public class Content {
 		this.format = format;
 	}
 
-	// TOSTRING AND HASH
-	
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Content [id=").append(id).append(", title=").append(title).append(", description=")
-				.append(description).append(", imageUrl=").append(imageUrl).append(", trailerUrl=").append(trailerUrl)
-				.append(", imdbrUrl=").append(imdbrUrl).append(", format=").append(format).append("]");
-		return builder.toString();
+	public Integer getReleaseDate() {
+		return releaseDate;
 	}
 
+	public void setReleaseDate(Integer releaseDate) {
+		this.releaseDate = releaseDate;
+	}
+
+	public LocalDateTime getcreateDate() {
+		return createDate;
+	}
+
+	public void setcreateDate(LocalDateTime createDate) {
+		this.createDate = createDate;
+	}
+
+	// TOSTRING AND HASH
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -144,7 +154,16 @@ public class Content {
 			return false;
 		return true;
 	}
-	 
-	
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Content [id=").append(id).append(", title=").append(title).append(", description=")
+				.append(description).append(", imageUrl=").append(imageUrl).append(", trailerUrl=").append(trailerUrl)
+				.append(", format=").append(format).append(", releaseDate=").append(releaseDate).append(", createDate=")
+				.append(createDate).append("]");
+		return builder.toString();
+	}
+
 	
 }
