@@ -1,7 +1,6 @@
 package com.skilldistillery.HuluAndHang.entities;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
