@@ -1,6 +1,6 @@
 package com.skilldistillery.HuluAndHang.entities;
 
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -16,11 +16,11 @@ class ContentTest {
 
 	private static EntityManagerFactory emf;
 	private static EntityManager em;
-	private Content content;
+	private static Content content;
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-		emf = Persistence.createEntityManagerFactory("VideoStore");
+		emf = Persistence.createEntityManagerFactory("midterm");
 	}
 
 	@AfterAll
@@ -31,6 +31,7 @@ class ContentTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
+		content = em.find(Content.class, 1);
 	}
 
 	@AfterEach
@@ -41,7 +42,10 @@ class ContentTest {
 
 	@Test
 	void test() {
-		fail("Not yet implemented");
+		assertEquals("Joker", content.getTitle());
+		assertEquals(2000, content.getReleaseDate());
+
+		
 	}
 
 }

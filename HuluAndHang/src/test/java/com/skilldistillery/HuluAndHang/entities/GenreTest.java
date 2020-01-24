@@ -1,7 +1,5 @@
 package com.skilldistillery.HuluAndHang.entities;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
