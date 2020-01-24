@@ -21,13 +21,13 @@ public class User {
 	@Column(name = "last_name")
 	private String lastName;
 
-	private String userName;
+	private String username;
 
 	@Column(name = "password")
 	private String userPassword;
 
 	@Column(name = "phone")
-	private Integer phoneNumber;
+	private Long phoneNumber;
 	
 	private String email;
 	
@@ -39,7 +39,7 @@ public class User {
 	@Column(name = "active")
 	private Boolean isActive = true;
 
-	@Column(name = "admin_privleges")
+	@Column(name = "admin_privledges")
 	private Boolean adminPrivleges = false;
 
 	// GETTERS | SETTERS | METHODS | CONSTRUCTORS
@@ -69,11 +69,11 @@ public class User {
 	}
 
 	public String getUserName() {
-		return userName;
+		return username;
 	}
 
 	public void setUserName(String userName) {
-		this.userName = userName;
+		this.username = userName;
 	}
 
 	public String getUserPassword() {
@@ -84,11 +84,11 @@ public class User {
 		this.userPassword = userPassword;
 	}
 
-	public Integer getPhoneNumber() {
+	public Long getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(Integer phoneNumber) {
+	public void setPhoneNumber(Long phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
@@ -110,11 +110,11 @@ public class User {
 	// toString
 
 	public String getUsername() {
-		return userName;
+		return username;
 	}
 
 	public void setUsername(String username) {
-		this.userName = username;
+		this.username = username;
 	}
 
 	public String getEmail() {
@@ -151,7 +151,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", username=" + userName
+		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", username=" + username
 				+ ", userPassword=" + userPassword + ", phoneNumber=" + phoneNumber + ", email=" + email + ", age="
 				+ age + ", description=" + description + ", isActive=" + isActive + ", adminPrivleges=" + adminPrivleges
 				+ "]";
