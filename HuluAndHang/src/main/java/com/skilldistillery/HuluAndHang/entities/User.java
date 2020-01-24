@@ -21,7 +21,7 @@ public class User {
 	@Column(name = "last_name")
 	private String lastName;
 
-	private String username;
+	private String userName;
 
 	@Column(name = "password")
 	private String userPassword;
@@ -110,11 +110,11 @@ public class User {
 	// toString
 
 	public String getUsername() {
-		return username;
+		return userName;
 	}
 
 	public void setUsername(String username) {
-		this.username = username;
+		this.userName = username;
 	}
 
 	public String getEmail() {
@@ -151,11 +151,10 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", username=" + username
+		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", username=" + userName
 				+ ", userPassword=" + userPassword + ", phoneNumber=" + phoneNumber + ", email=" + email + ", age="
 				+ age + ", description=" + description + ", isActive=" + isActive + ", adminPrivleges=" + adminPrivleges
 				+ "]";
 	}
 
 }
-
