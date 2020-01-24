@@ -29,7 +29,6 @@ public class Content {
 	@Column(name="Description")
 	private String description;
 	
-	
 	@Column(name="img_url")
 	private String imageUrl;
 	
@@ -42,10 +41,15 @@ public class Content {
 	@Column(name="release_date")
 	private Integer releaseDate;
 
-	
 	@Column(name="create_date")
 	@CreationTimestamp
 	private LocalDateTime createDate;
+	
+	@ManyToMany
+	@JoinTable(name="genre_content",
+	joinColumns = @JoinColumn(name = "content_id"),
+	inverseJoinColumns=@JoinColumn(name="genre_id"))
+	private List<Genre> genres;
 	
 	public LocalDateTime getCreateDate() {
 		return createDate;
@@ -63,11 +67,6 @@ public class Content {
 		this.genres = genres;
 	}
 
-	@ManyToMany
-	@JoinTable(name="genre_content",
-	joinColumns = @JoinColumn(name = "content_id"),
-	inverseJoinColumns=@JoinColumn(name="genre_id"))
-	private List<Genre> genres;
 	
 	// CONSTRUCTORS
 	
