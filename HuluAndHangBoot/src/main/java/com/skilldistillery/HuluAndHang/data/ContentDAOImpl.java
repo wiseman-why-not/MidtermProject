@@ -6,13 +6,14 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+//import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.HuluAndHang.entities.Content;
-import com.skilldistillery.HuluAndHang.entities.Genre;
+
 
 @Service
 @Transactional
