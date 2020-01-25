@@ -1,6 +1,7 @@
 package com.skilldistillery.HuluAndHang.entities;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -154,6 +155,23 @@ public class Content {
 
 	public void setcreateDate(LocalDateTime createDate) {
 		this.createDate = createDate;
+	}
+	
+	public void addGenre(Genre genre) {
+		if (this.genres == null) {
+			genres = new ArrayList<Genre>();
+		}
+		if(! genres.contains(genre)) {
+			genres.add(genre);
+			genre.addContent(this);
+		}
+	}
+	
+	public void removeGenre(Genre genre) {
+		if (genres != null && genres.contains(genre)) {
+			genres.remove(genre);
+			genre.removeContent(this);
+		}
 	}
 
 	// TOSTRING AND HASH
