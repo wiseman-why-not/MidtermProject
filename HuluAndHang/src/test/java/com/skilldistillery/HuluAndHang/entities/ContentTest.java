@@ -57,7 +57,6 @@ class ContentTest {
 		assertTrue(content.getGenres().size()>0);
 		List<Genre> genres = new ArrayList<>();
 		genres = content.getGenres();
-		//System.out.println(genres.toString());
 		assertEquals("Crime", genres.get(0).getName());		
 	}
 	
