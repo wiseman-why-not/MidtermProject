@@ -23,10 +23,13 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public User findByLogin(String username, String password) {
-		String query = "SELECT user FROM User user WHERE user.username = :username AND user.userPassword = :password";
+		String query = "SELECT user FROM User user  WHERE user.username = :username AND user.userPassword = :password";
 		try {
-			return em.createQuery(query, User.class).setParameter("username", username)
+			User user =  em.createQuery(query, User.class).setParameter("username", username)
 					.setParameter("password", password).getSingleResult();
+			System.out.println(user);
+			user.getContents();
+			return user;
 		} catch (Exception e) {
 			return null;
 		}

@@ -193,7 +193,7 @@ public class User {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", username=" + username
 				+ ", userPassword=" + userPassword + ", phoneNumber=" + phoneNumber + ", email=" + email + ", age="
 				+ age + ", description=" + description + ", isActive=" + isActive + ", adminPrivleges=" + adminPrivleges
-				+ "]";
+				+ "contents" + this.contents + "]";
 	}
 
 
