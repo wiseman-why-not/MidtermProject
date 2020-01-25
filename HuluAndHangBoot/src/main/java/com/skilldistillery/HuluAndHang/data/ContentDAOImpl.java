@@ -14,6 +14,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.HuluAndHang.entities.Content;
+import com.skilldistillery.HuluAndHang.entities.User;
 
 
 @Service
@@ -122,6 +123,15 @@ public class ContentDAOImpl implements ContentDAO{
 		.setParameter("key","%"+key+"%")
 		.getResultList();
 		return contents;
+	}
+
+	@Override
+	public List<User> getUserListFromContent() {
+		String query = "SELECT content FROM Content JOIN FETCH cotnent.users JOIN FETCH content.genres";
+		List<User> users = em.createQuery(query, User.class)
+				.getResultList();
+		
+		return users;
 	}
 	
 	 
