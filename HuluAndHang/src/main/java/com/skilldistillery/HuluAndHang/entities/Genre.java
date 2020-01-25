@@ -38,9 +38,6 @@ public class Genre {
 	
 	@ManyToMany(mappedBy="genres")
 	List<Content> contents;
-	
-	@ManyToMany(mappedBy="genres")
-	List<User> users;
 
 	public List<Content> getContents() {
 		return contents;

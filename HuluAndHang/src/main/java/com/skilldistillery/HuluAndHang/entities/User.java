@@ -53,7 +53,7 @@ public class User {
 	
 	@ManyToMany
 	@JoinTable(name="user_genre",
-	joinColumns = @JoinColumn(name = "user_id"),
+	joinColumns = @JoinColumn(name="user_id"),
 	inverseJoinColumns=@JoinColumn(name="genre_id"))
 	private List<Genre> genres;
 	
@@ -193,7 +193,7 @@ public class User {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", username=" + username
 				+ ", userPassword=" + userPassword + ", phoneNumber=" + phoneNumber + ", email=" + email + ", age="
 				+ age + ", description=" + description + ", isActive=" + isActive + ", adminPrivleges=" + adminPrivleges
-				+ "contents" + this.contents + "]";
+				+ " genres" + this.genres + " contents" + this.contents + "]";
 	}
 
 
