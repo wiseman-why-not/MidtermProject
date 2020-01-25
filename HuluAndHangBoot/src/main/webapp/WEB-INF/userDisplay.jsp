@@ -26,7 +26,7 @@
 				<p>${user.description}</p>
 			</section>
 			<section class="user-movies">
-				movies list
+				${user.contents}
 			</section>
 		</main>
 		<jsp:include page="footer.jsp"></jsp:include>
