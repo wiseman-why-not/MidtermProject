@@ -1,10 +1,14 @@
 package com.skilldistillery.HuluAndHang.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class User {
@@ -41,6 +45,10 @@ public class User {
 
 	@Column(name = "admin_privledges")
 	private Boolean adminPrivleges = false;
+	
+	@ManyToMany(mappedBy = "users")
+	private List<Content> contents;
+	
 
 	// GETTERS | SETTERS | METHODS | CONSTRUCTORS
 
@@ -136,6 +144,31 @@ public class User {
 	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
 	}
+	
+	public List<Content> getContents() {
+		return contents;
+	}
+
+	public void setContents(List<Content> contents) {
+		this.contents = contents;
+	}
+	
+	public void addContent(Content content) {
+		if (contents == null) {
+			contents = new ArrayList<>();
+		}
+		if(! contents.contains(content)) {
+			contents.add(content);
+			content.addUser(this);
+		}
+	}
+	
+	public void removeContent(Content content) {
+		if (contents != null && contents.contains(content)) {
+			contents.remove(content);
+			content.removeUser(this);
+		}
+	}
 
 	// toString
 
@@ -146,5 +179,7 @@ public class User {
 				+ age + ", description=" + description + ", isActive=" + isActive + ", adminPrivleges=" + adminPrivleges
 				+ "]";
 	}
+
+
 
 }
