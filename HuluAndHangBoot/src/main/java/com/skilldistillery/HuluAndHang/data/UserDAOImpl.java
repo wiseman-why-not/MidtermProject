@@ -1,6 +1,7 @@
 package com.skilldistillery.HuluAndHang.data;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -13,8 +14,12 @@ import com.skilldistillery.HuluAndHang.entities.User;
 @Transactional
 public class UserDAOImpl implements UserDAO {
 
-	@PersistenceContext
-	private EntityManager em;
+	//@PersistenceContext
+	//private EntityManager em;
+	
+	EntityManagerFactory emf =
+	Persistence.createEntityManagerFactory("midterm");
+	EntityManager em = emf.createEntityManager();
 
 	@Override
 	public User find(int id) {
@@ -27,8 +32,9 @@ public class UserDAOImpl implements UserDAO {
 		try {
 			User user =  em.createQuery(query, User.class).setParameter("username", username)
 					.setParameter("password", password).getSingleResult();
-			System.out.println(user);
+			//System.out.println(user);
 			user.getContents();
+			user.getGenres();
 			return user;
 		} catch (Exception e) {
 			return null;
