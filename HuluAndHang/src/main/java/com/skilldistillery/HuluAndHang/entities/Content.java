@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -52,26 +53,27 @@ public class Content {
 	inverseJoinColumns=@JoinColumn(name="genre_id"))
 	private List<Genre> genres;
 	
-	public LocalDateTime getCreateDate() {
-		return createDate;
-	}
-
-	public void setCreateDate(LocalDateTime createDate) {
-		this.createDate = createDate;
-	}
-
-	public List<Genre> getGenres() {
-		return genres;
-	}
-
-	public void setGenres(List<Genre> genres) {
-		this.genres = genres;
-	}
-
+	@ManyToMany
+	@JoinTable(name="favorite_content",
+	joinColumns = @JoinColumn(name ="user_id"),
+	inverseJoinColumns = @JoinColumn(name="content_id"))
+	private List<User> users;
+	
+	@OneToMany(mappedBy="content")
+	private List<Season> seasons;
+	
 	
 	// CONSTRUCTORS
 	
 	
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
+
 	public Content() {
 		super();
 	}
@@ -157,9 +159,35 @@ public class Content {
 		this.createDate = createDate;
 	}
 	
+	public LocalDateTime getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(LocalDateTime createDate) {
+		this.createDate = createDate;
+	}
+
+	public List<Genre> getGenres() {
+		return genres;
+	}
+
+	public void setGenres(List<Genre> genres) {
+		this.genres = genres;
+	}
+	
+	public List<Season> getSeasons() {
+		return seasons;
+	}
+
+	public void setSeasons(List<Season> seasons) {
+		this.seasons = seasons;
+	}
+	
+	// ADDERS AND REMOVERS
+	
 	public void addGenre(Genre genre) {
 		if (this.genres == null) {
-			genres = new ArrayList<Genre>();
+			genres = new ArrayList<>();
 		}
 		if(! genres.contains(genre)) {
 			genres.add(genre);
@@ -173,6 +201,47 @@ public class Content {
 			genre.removeContent(this);
 		}
 	}
+	
+	public void addUser(User user) {
+		if (users == null) {
+			users = new ArrayList<>();
+		}
+		if(! users.contains(user)) {
+			users.add(user);
+			user.addContent(this);
+		}
+	}
+	
+	public void removeUser(User user) {
+		if (users != null && users.contains(user)) {
+			users.remove(user);
+			user.removeContent(this);
+		}
+	}
+	
+	public void addSeason (Season season) {
+		if (seasons == null) {
+			seasons = new ArrayList<>();
+		}
+		if (!seasons.contains(season)) {
+			seasons.add(season);
+			if(season.getContent() != null){
+				season.getContent().getSeasons().remove(season);
+			}
+		}
+			season.setContent(this);
+	}
+	
+	public void removeSeason(Season season){
+		season.setContent(null);
+		if(seasons != null){
+			seasons.remove(season);
+		}
+
+	
+	}
+	
+
 
 	// TOSTRING AND HASH
 	
@@ -207,6 +276,8 @@ public class Content {
 				.append(createDate).append("]");
 		return builder.toString();
 	}
+
+	
 
 	
 }
