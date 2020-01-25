@@ -250,6 +250,27 @@ COMMIT;
 
 
 -- -----------------------------------------------------
+-- Data for table `favorite_content`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `midterm_db`;
+INSERT INTO `favorite_content` (`user_id`, `content_id`) VALUES (1, 1);
+INSERT INTO `favorite_content` (`user_id`, `content_id`) VALUES (1, 2);
+INSERT INTO `favorite_content` (`user_id`, `content_id`) VALUES (1, 3);
+INSERT INTO `favorite_content` (`user_id`, `content_id`) VALUES (2, 1);
+INSERT INTO `favorite_content` (`user_id`, `content_id`) VALUES (2, 2);
+INSERT INTO `favorite_content` (`user_id`, `content_id`) VALUES (2, 3);
+INSERT INTO `favorite_content` (`user_id`, `content_id`) VALUES (3, 1);
+INSERT INTO `favorite_content` (`user_id`, `content_id`) VALUES (3, 2);
+INSERT INTO `favorite_content` (`user_id`, `content_id`) VALUES (3, 3);
+INSERT INTO `favorite_content` (`user_id`, `content_id`) VALUES (4, 1);
+INSERT INTO `favorite_content` (`user_id`, `content_id`) VALUES (4, 2);
+INSERT INTO `favorite_content` (`user_id`, `content_id`) VALUES (4, 3);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
 -- Data for table `genre_content`
 -- -----------------------------------------------------
 START TRANSACTION;
