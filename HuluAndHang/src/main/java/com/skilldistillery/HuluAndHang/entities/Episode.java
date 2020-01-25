@@ -18,9 +18,9 @@ public class Episode {
 	@Column(name="title")
 	private String title;
 	
-	@ManyToOne
-	@Column(name="season_id")
-	private Integer seasonId;
+//	@ManyToOne
+//	@Column(name="season_id")
+//	private Integer seasonId;
 	
 	
 	
@@ -42,14 +42,14 @@ public class Episode {
 		this.title = title;
 	}
 
-	public Integer getSeasonId() {
-		return seasonId;
-	}
-
-	public void setSeasonId(Integer seasonId) {
-		this.seasonId = seasonId;
-	}
-	
+//	public Integer getSeasonId() {
+//		return seasonId;
+//	}
+//
+//	public void setSeasonId(Integer seasonId) {
+//		this.seasonId = seasonId;
+//	}
+//	
 
 	
 	// constructors
@@ -58,11 +58,11 @@ public class Episode {
 		super();
 	}
 
-	@Override
-	public String toString() {
-		return "Episode [id=" + id + ", title=" + title + ", seasonId=" + seasonId + "]";
-	}
-	
+//	@Override
+//	public String toString() {
+//		return "Episode [id=" + id + ", title=" + title + ", seasonId=" + seasonId + "]";
+//	}
+//	
 	
 	@Override
 	public int hashCode() {

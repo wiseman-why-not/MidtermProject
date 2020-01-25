@@ -59,8 +59,8 @@ public class Content {
 	inverseJoinColumns = @JoinColumn(name="user_id"))
 	private List<User> users;
 	
-	@OneToMany(mappedBy="content")
-	private List<Season> seasons;
+//	@OneToMany(mappedBy="content")
+//	private List<Season> seasons;
 	
 	
 	// CONSTRUCTORS
@@ -174,13 +174,13 @@ public class Content {
 		this.genres = genres;
 	}
 	
-	public List<Season> getSeasons() {
-		return seasons;
-	}
-
-	public void setSeasons(List<Season> seasons) {
-		this.seasons = seasons;
-	}
+//	public List<Season> getSeasons() {
+//		return seasons;
+//	}
+//
+//	public void setSeasons(List<Season> seasons) {
+//		this.seasons = seasons;
+//	}
 	
 	// ADDERS AND REMOVERS
 	public void addGenre(Genre genre) {
@@ -217,28 +217,28 @@ public class Content {
 			user.removeContent(this);
 		}
 	}
-	
-	public void addSeason (Season season) {
-		if (seasons == null) {
-			seasons = new ArrayList<>();
-		}
-		if (!seasons.contains(season)) {
-			seasons.add(season);
-			if(season.getContent() != null){
-				season.getContent().getSeasons().remove(season);
-			}
-		}
-			season.setContent(this);
-	}
-	
-	public void removeSeason(Season season){
-		season.setContent(null);
-		if(seasons != null){
-			seasons.remove(season);
-		}
-
-	
-	}
+//	
+//	public void addSeason (Season season) {
+//		if (seasons == null) {
+//			seasons = new ArrayList<>();
+//		}
+//		if (!seasons.contains(season)) {
+//			seasons.add(season);
+//			if(season.getContent() != null){
+//				season.getContent().getSeasons().remove(season);
+//			}
+//		}
+//			season.setContent(this);
+//	}
+//	
+//	public void removeSeason(Season season){
+//		season.setContent(null);
+//		if(seasons != null){
+//			seasons.remove(season);
+//		}
+//
+//	
+//	}
 	
 
 

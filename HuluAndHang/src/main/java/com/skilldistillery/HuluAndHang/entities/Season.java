@@ -25,12 +25,12 @@ public class Season {
 	@Column(name="season_number")
 	private Integer seasonNumber;
 	
-	@OneToMany(mappedBy="season")
-	private List<Episode> episodes;
+//	@OneToMany(mappedBy="season")
+//	private List<Episode> episodes;
 	
-	@ManyToOne
-	@JoinColumn(name = "content_id")
-	private Content content;
+//	@ManyToOne
+//	@JoinColumn(name = "content_id")
+//	private Content content;
 
 	public Integer getId() {
 		return id;
@@ -56,45 +56,45 @@ public class Season {
 		this.seasonNumber = seasonNumber;
 	}
 	
-	public List<Episode> getEpisodes() {
-		return episodes;
-	}
-
-	public void setEpisodes(List<Episode> episodes) {
-		this.episodes = episodes;
-	}
-	
-	
-	public Content getContent() {
-		return content;
-	}
-
-	public void setContent(Content content) {
-		this.content = content;
-	}
+//	public List<Episode> getEpisodes() {
+//		return episodes;
+//	}
+//
+//	public void setEpisodes(List<Episode> episodes) {
+//		this.episodes = episodes;
+//	}
+//	
+//	
+//	public Content getContent() {
+//		return content;
+//	}
+//
+//	public void setContent(Content content) {
+//		this.content = content;
+//	}
 	
 	// ADDERS AND REMOVERS
 	
 
 	
-	public void addEpisode (Episode episode) {
-		if (episodes == null) {
-			episodes = new ArrayList<>();
-		}
-		if (!episodes.contains(episode)) {
-			episodes.add(episode);
-			
-		}
-			episode.setSeasonId(episode.getSeasonId());
-	}
-	
-	public void removeEpisode(Episode episode){
-		episode.setSeasonId(null);
-		if(episodes != null){
-			episodes.remove(episode);
-		}
-	
-	}
+//	public void addEpisode (Episode episode) {
+//		if (episodes == null) {
+//			episodes = new ArrayList<>();
+//		}
+//		if (!episodes.contains(episode)) {
+//			episodes.add(episode);
+//			
+//		}
+//			episode.setSeasonId(episode.getSeasonId());
+//	}
+//	
+//	public void removeEpisode(Episode episode){
+//		episode.setSeasonId(null);
+//		if(episodes != null){
+//			episodes.remove(episode);
+//		}
+//	
+//	}
 	
 
 	// CONSTRUCTORS 
