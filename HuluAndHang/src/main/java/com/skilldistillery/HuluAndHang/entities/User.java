@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 @Entity
@@ -49,8 +51,22 @@ public class User {
 	@ManyToMany(mappedBy = "users")
 	private List<Content> contents;
 	
+	@ManyToMany
+	@JoinTable(name="user_genre",
+	joinColumns = @JoinColumn(name = "user_id"),
+	inverseJoinColumns=@JoinColumn(name="genre_id"))
+	private List<Genre> genres;
+	
 
 	// GETTERS | SETTERS | METHODS | CONSTRUCTORS
+
+	public List<Genre> getGenres() {
+		return genres;
+	}
+
+	public void setGenres(List<Genre> genres) {
+		this.genres = genres;
+	}
 
 	public User() {
 		super();

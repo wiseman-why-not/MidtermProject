@@ -32,7 +32,7 @@ public class EpisodeTest {
 	void test1() {
 		episode = new Episode();
 		episode.setTitle("testing");
-		episode.setSeasonId(1);
+		//episode.setSeasonId(1);
 		episode.setId(1);
 		System.out.println("before episode persist");
 		System.out.println(episode.toString());	
