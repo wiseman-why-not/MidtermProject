@@ -55,8 +55,8 @@ public class Content {
 	
 	@ManyToMany
 	@JoinTable(name="favorite_content",
-	joinColumns = @JoinColumn(name ="user_id"),
-	inverseJoinColumns = @JoinColumn(name="content_id"))
+	joinColumns = @JoinColumn(name ="content_id"),
+	inverseJoinColumns = @JoinColumn(name="user_id"))
 	private List<User> users;
 	
 	@OneToMany(mappedBy="content")
@@ -158,7 +158,6 @@ public class Content {
 	public void setcreateDate(LocalDateTime createDate) {
 		this.createDate = createDate;
 	}
-	
 	public LocalDateTime getCreateDate() {
 		return createDate;
 	}
@@ -184,7 +183,6 @@ public class Content {
 	}
 	
 	// ADDERS AND REMOVERS
-	
 	public void addGenre(Genre genre) {
 		if (this.genres == null) {
 			genres = new ArrayList<>();
@@ -193,6 +191,8 @@ public class Content {
 			genres.add(genre);
 			genre.addContent(this);
 		}
+		return genres;
+		
 	}
 	
 	public void removeGenre(Genre genre) {

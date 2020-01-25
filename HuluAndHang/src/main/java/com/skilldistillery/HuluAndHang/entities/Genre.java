@@ -52,7 +52,7 @@ public class Genre {
 	}
 	
 	
-	public void addContent(Content content) {
+	public List<Content> addContent(Content content) {
 		if (this.contents == null) {
 			contents = new ArrayList<Content>();
 		}
@@ -60,13 +60,15 @@ public class Genre {
 			contents.add(content);
 			content.addGenre(this);
 		}
+		return contents;
 	}
 	
-	public void removeContent(Content content) {
+	public List<Content> removeContent(Content content) {
 		if (contents != null && contents.contains(content)) {
 			contents.remove(content);
 			content.removeGenre(this);
 		}
+		return contents;
 	}
 		
 		
