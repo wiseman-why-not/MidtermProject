@@ -18,11 +18,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public User find(int id) {
-
-		User user = em.find(User.class, id);
-
-		return user;
-
+		return em.find(User.class, id);
 	}
 
 	@Override
@@ -36,19 +32,16 @@ public class UserDAOImpl implements UserDAO {
 		}
 	}
 
+	@Override
 	public User createUser(User user) {
-
 		em.persist(user);
-
 		return user;
 	}
 
+	@Override
 	public boolean updateUser(User user) {
-
 		User managedUser = em.find(User.class, user.getId());
-
 		try {
-
 			managedUser.setUsername(user.getUsername());
 			managedUser.setAge(user.getAge());
 			managedUser.setDescription(user.getDescription());
@@ -59,12 +52,24 @@ public class UserDAOImpl implements UserDAO {
 			managedUser.setUserPassword(user.getUserPassword());
 			managedUser.setIsActive(user.getIsActive());
 			return true;
-
-		}
-
-		catch (Exception e) {
+		} catch (Exception e) {
 			return false;
 		}
 	}
+
+	@Override
+	public boolean checkUsernameavailability(String username) {
+		String query = "SELECT user FROM User user WHERE user.username = :username";
+		try {
+			em.createQuery(query, User.class)
+				.setParameter("username", username)
+				.getSingleResult();
+			return false;
+		} catch (Exception e) {
+			return true;
+		}
+	}
+	
+	
 
 }

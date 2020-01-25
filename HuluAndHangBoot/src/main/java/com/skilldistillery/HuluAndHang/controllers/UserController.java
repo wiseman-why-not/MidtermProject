@@ -30,6 +30,12 @@ public class UserController {
 		return "createUser";
 	}
 	
+	@RequestMapping(path = "addUser.do")
+	public String addUserToDB(User user){
+		
+		return "home";
+	}
+	
 	@RequestMapping(path = "login.do")
 	public String checkLoginInfo(String password, String userName,  HttpSession session){
 		User user = dao.findByLogin(userName, password);

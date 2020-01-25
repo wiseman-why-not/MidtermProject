@@ -11,7 +11,7 @@
 	<body>
 		<jsp:include page="header.jsp"></jsp:include>
 		<main class="container">
-			<form>
+			<form action="addUser.do" method="POST">
 				<h2>Create User</h2>
 				<div class="form-group">
 	    			<label for="first-name">First Name</label>
@@ -27,7 +27,7 @@
   				</div>
 				<div class="form-group">
 	    			<label for="password">Password</label>
-	    			<input type="text" name="password" id="password" class="form-control">
+	    			<input type="password" name="password" id="password" class="form-control">
   				</div>
 				<div class="form-group">
 	    			<label for="email">Email</label>
@@ -35,8 +35,11 @@
   				</div>
 				<div class="form-group">
 	    			<label for="phone-number">Phone Number</label>
-	    			<input type="text" name="phoneNumber" id="phone-number" class="form-control">
+	    			<input type="number" name="phoneNumber" id="phone-number" class="form-control">
+	    			<label for="age">Age</label>
+	    			<input type="number" name="age" id="age" class="form-control">
   				</div>
+  				<input type="submit" value="Create" />
 			</form>
 		</main>
 		<jsp:include page="footer.jsp"></jsp:include>
