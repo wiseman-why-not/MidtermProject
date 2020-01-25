@@ -31,9 +31,14 @@ public class UserController {
 	}
 	
 	@RequestMapping(path = "addUser.do")
-	public String addUserToDB(User user){
-		
-		return "home";
+	public String addUserToDB(User user, HttpSession session){
+		boolean avaible = dao.checkUsernameavailability(user.getUsername());
+		if(avaible) {
+			return "createUser";
+		} else {
+			session.setAttribute("user", dao.createUser(user));
+			return "home";
+		}
 	}
 	
 	@RequestMapping(path = "login.do")

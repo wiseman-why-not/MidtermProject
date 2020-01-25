@@ -11,7 +11,7 @@
 	<body>
 		<jsp:include page="header.jsp"></jsp:include>
 		<main class="container">
-			<form action="addUser.do" method="POST">
+			<form action="addUser .do" method="POST">
 				<h2>Create User</h2>
 				<div class="form-group">
 	    			<label for="first-name">First Name</label>
