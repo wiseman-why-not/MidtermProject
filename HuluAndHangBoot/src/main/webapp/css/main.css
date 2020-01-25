@@ -28,6 +28,11 @@ h1 {
 
 .collapseView h1 {
 	font-size: 40px;
-	color: white;
-	background: linear-gradient(315deg, #7ee8fa 0%, #80ff72 74%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background: linear-gradient(315deg, #fff 0%, #fff 74%);
+}
+
+.collapseView {
+	background: -webkit-linear-gradient(315deg, #7ee8fa 0%, #80ff72 74%);
 }

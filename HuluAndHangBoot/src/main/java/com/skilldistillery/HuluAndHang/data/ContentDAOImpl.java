@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 //import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
@@ -22,12 +23,12 @@ public class ContentDAOImpl implements ContentDAO{
 	/* if running spring boot use the @PersistenceContext
 	 */
 
-	//@PersistenceContext
-	//private EntityManager em;
+	@PersistenceContext
+	private EntityManager em;
 	
-	EntityManagerFactory emf =
-	Persistence.createEntityManagerFactory("midterm");
-	EntityManager em = emf.createEntityManager();
+//	EntityManagerFactory emf =
+//	Persistence.createEntityManagerFactory("midterm");
+//	EntityManager em = emf.createEntityManager();
 	
 	private Content content;
 	List<Content> contents;
@@ -40,10 +41,10 @@ public class ContentDAOImpl implements ContentDAO{
 	}
 	
 	public void createContent(Content content) {
-		em.getTransaction().begin();
+//		em.getTransaction().begin();
 		em.persist(content);
-		em.flush();
-		em.getTransaction().commit();
+//		em.flush();
+//		em.getTransaction().commit();
 	}
 	
 	public List<Content> findByTitle(String title) {
@@ -58,17 +59,17 @@ public class ContentDAOImpl implements ContentDAO{
 	
 	public boolean deleteById(int id) {
 		content = em.find(Content.class, id);
-		em.getTransaction().begin();
+//		em.getTransaction().begin();
 		em.remove(content);
 		em.flush();
-		em.getTransaction().commit();
+//		em.getTransaction().commit();
 		boolean status = !em.contains(content);
 		return status;	
 	}
 	
 	public Content updateById(int id, Content updateContent) {
 		content = em.find(Content.class, id);
-		em.getTransaction().begin();
+//		em.getTransaction().begin();
 		content.setTitle(updateContent.getTitle());
 		content.setDescription(updateContent.getDescription());
 		content.setCreateDate(updateContent.getcreateDate());
@@ -78,7 +79,7 @@ public class ContentDAOImpl implements ContentDAO{
 		content.setTrailerUrl(updateContent.getTrailerUrl());
 		content.setGenres(updateContent.getGenres());		
 		em.flush();
-		em.getTransaction().commit();
+//		em.getTransaction().commit();
 		return content;	
 	}
 	
@@ -89,10 +90,10 @@ public class ContentDAOImpl implements ContentDAO{
 		Query query = em.createNativeQuery("insert into genre_content (content_id, genre_id) values (:contentId, :genreId);")
 		.setParameter("contentId",contentId)
 		.setParameter("genreId",genreId);
-		em.getTransaction().begin();
+//		em.getTransaction().begin();
 		query.executeUpdate();
 		em.flush();
-		em.getTransaction().commit();
+//		em.getTransaction().commit();
 	}
 	
 	public void removeGenre(int contentId, int genreId) {
@@ -100,10 +101,10 @@ public class ContentDAOImpl implements ContentDAO{
 		Query query = em.createNativeQuery("delete from genre_content where content_id = :contentId and genre_id = :genreId")
 		.setParameter("contentId",contentId)
 		.setParameter("genreId",genreId);
-		em.getTransaction().begin();
+//		em.getTransaction().begin();
 		query.executeUpdate();
 		em.flush();
-		em.getTransaction().commit();
+//		em.getTransaction().commit();
 	}
 	
 	public List<Content> findAll(){

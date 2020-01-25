@@ -18,6 +18,9 @@
 			</section>
 			<section class="user-meta">
 				genre
+				<c:forEach var="genre" items="${user.genres}">
+					<h3>${genre.name}</h3>
+				</c:forEach>
 			</section>
 			<section class="user-description">
 				<c:if test="${empty user.description}">
@@ -26,7 +29,11 @@
 				<p>${user.description}</p>
 			</section>
 			<section class="user-movies">
-				${user.contents}
+				<c:forEach var="content" items="${user.contents}">
+					<div class="content-card">
+						<h3>${content.title}</h3>
+					</div>
+				</c:forEach>
 			</section>
 		</main>
 		<jsp:include page="footer.jsp"></jsp:include>
