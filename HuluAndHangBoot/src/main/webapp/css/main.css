@@ -7,6 +7,7 @@ header {
 	position: fixed;
 	top: 0;
 	width: 100%;
+	background: linear-gradient(315deg, rgba(255,255, 255, 0) 0%, rgba(255,255, 255, 0) 74%);
 }
 
 nav {
@@ -15,8 +16,18 @@ nav {
 }
 
 h1 {
-  font-size: 72px;
-  background: -webkit-linear-gradient(315deg, #7ee8fa 0%, #80ff72 74%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+	transition: 1s;
+}
+
+.fullView h1 {
+	 font-size: 72px;
+	  background: -webkit-linear-gradient(315deg, #7ee8fa 0%, #80ff72 74%);
+	  -webkit-background-clip: text;
+	  -webkit-text-fill-color: transparent;
+}
+
+.collapseView h1 {
+	font-size: 40px;
+	color: white;
+	background: linear-gradient(315deg, #7ee8fa 0%, #80ff72 74%);
 }
