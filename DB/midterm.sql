@@ -270,3 +270,22 @@ INSERT INTO `genre_content` (`content_id`, `genre_id`) VALUES (5, 17);
 
 COMMIT;
 
+
+-- -----------------------------------------------------
+-- Data for table `user_genre`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `midterm_db`;
+INSERT INTO `user_genre` (`user_id`, `genre_id`) VALUES (1, 2);
+INSERT INTO `user_genre` (`user_id`, `genre_id`) VALUES (1, 3);
+INSERT INTO `user_genre` (`user_id`, `genre_id`) VALUES (2, 4);
+INSERT INTO `user_genre` (`user_id`, `genre_id`) VALUES (2, 5);
+INSERT INTO `user_genre` (`user_id`, `genre_id`) VALUES (3, 6);
+INSERT INTO `user_genre` (`user_id`, `genre_id`) VALUES (3, 7);
+INSERT INTO `user_genre` (`user_id`, `genre_id`) VALUES (4, 8);
+INSERT INTO `user_genre` (`user_id`, `genre_id`) VALUES (4, 9);
+INSERT INTO `user_genre` (`user_id`, `genre_id`) VALUES (5, 10);
+INSERT INTO `user_genre` (`user_id`, `genre_id`) VALUES (5, DEFAULT);
+
+COMMIT;
+
