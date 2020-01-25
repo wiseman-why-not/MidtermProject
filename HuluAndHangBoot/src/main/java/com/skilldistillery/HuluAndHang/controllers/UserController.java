@@ -16,12 +16,18 @@ public class UserController {
 	@Autowired
 	private UserDAO dao;
 	
-	@RequestMapping(path = "/")
+	
+	@RequestMapping(path = "user.do")
+	public String homePage() {
+		return "userDisplay";
+	}
+	
+	@RequestMapping(path = { "/", "home.do" })
 	public String login(HttpSession session){
 		if(session.getAttribute("user") == null) {
 			return "index";
 		} else {
-			return "home";
+			return "redirect:user.do";
 		}
 	}
 	
@@ -34,10 +40,10 @@ public class UserController {
 	public String addUserToDB(User user, HttpSession session){
 		boolean avaible = dao.checkUsernameavailability(user.getUsername());
 		if(avaible) {
-			return "createUser";
-		} else {
 			session.setAttribute("user", dao.createUser(user));
-			return "home";
+			return "redirect:user.do";
+		} else {
+			return "createUser";
 		}
 	}
 	
@@ -48,13 +54,13 @@ public class UserController {
 			return "index";
 		} else {
 			session.setAttribute("user", user);
-			return "home";
+			return "redirect:user.do";
 		}
 	}
 	
-	@RequestMapping(path = "home.do")
-	public String home(Model model){
-		model.addAttribute("user", dao.find(1));
-		return "home";
+	@RequestMapping(path = "logout.do")
+	public String logout(HttpSession session) {
+		session.setAttribute("user", null);
+		return "redirect:home.do";
 	}
 }

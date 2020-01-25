@@ -34,7 +34,9 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public User createUser(User user) {
+		System.out.println(user);
 		em.persist(user);
+		System.out.println(user);
 		return user;
 	}
 

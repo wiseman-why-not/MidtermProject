@@ -11,7 +11,7 @@
 	<body>
 		<jsp:include page="header.jsp"></jsp:include>
 		<main class="container">
-			<form action="addUser .do" method="POST">
+			<form action="addUser.do" method="POST">
 				<h2>Create User</h2>
 				<div class="form-group">
 	    			<label for="first-name">First Name</label>
@@ -27,7 +27,7 @@
   				</div>
 				<div class="form-group">
 	    			<label for="password">Password</label>
-	    			<input type="password" name="password" id="password" class="form-control">
+	    			<input type="password" name="userPassword" id="password" class="form-control">
   				</div>
 				<div class="form-group">
 	    			<label for="email">Email</label>
