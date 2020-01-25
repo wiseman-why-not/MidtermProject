@@ -1,11 +1,20 @@
 main {
-	margin-top: 100px;
+	margin-top: 150px;
 	min-height: 100vh;
 	display: grid;
 	grid-template-columns: 1fr 3fr;
+	grid-template-rows: 200px 1fr;
+	grid-gap: 20px;
 	grid-template-areas:
 		"userImage description"
 		"userMeta movieList"
+}
+
+img {
+	height: 150px;
+	width: 150px;
+	border-radius: 50%;
+	border: 1px solid #ffffff;
 }
 
 section {
@@ -13,20 +22,35 @@ section {
 }
 
 .user-image {
+	padding: 5%;
+	text-align: center;
 	border-radius: 10px;
-	background-color: #3393FF;
+	background-color: #4dbeff;
+	background-image: linear-gradient(315deg, #4dbeff 0%, #009ffd 74%);
 	grid-area: userImage;
-	
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-direction: column;
+	box-shadow: 1px 1px 17px -2px #727272;
 }
 
+
 .user-meta {
-	background-color: #3393FF;
+	border-radius: 10px;
+	background-color: #4dbeff;
+	background-image: linear-gradient(315deg, #4dbeff 0%, #009ffd 74%);
 	grid-area: userMeta;
+	box-shadow: 1px 1px 17px -2px #727272;
 }
 
 .user-description {
-	background-color: #3393FF;
+	padding: 10px;
+	border-radius: 10px;
+	background-color: #4dbeff;
+	background-image: linear-gradient(315deg, #4dbeff 0%, #009ffd 74%);
 	grid-area: description;
+	box-shadow: 1px 1px 17px -2px #727272;
 }
 
 .user-movies {

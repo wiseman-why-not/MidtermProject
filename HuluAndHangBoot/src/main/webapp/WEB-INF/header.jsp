@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<header>
+<header class="fullView">
 	<h1>Hulu&Hang</h1>
 	<c:if test="${!empty user}">
 		<nav>

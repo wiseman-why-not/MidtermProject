@@ -4,10 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.skilldistillery.HuluAndHang.data.HuluAndHangDAO;
 import com.skilldistillery.HuluAndHang.data.UserDAO;
 import com.skilldistillery.HuluAndHang.entities.User;
 
@@ -18,12 +15,12 @@ public class UserController {
 	
 	
 	@RequestMapping(path = "user.do")
-	public String homePage() {
+	public String userPage(HttpSession session) {
 		return "userDisplay";
 	}
 	
 	@RequestMapping(path = { "/", "home.do" })
-	public String login(HttpSession session){
+	public String loginPage(HttpSession session){
 		if(session.getAttribute("user") == null) {
 			return "index";
 		} else {
