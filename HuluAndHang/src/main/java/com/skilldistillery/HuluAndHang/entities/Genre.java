@@ -1,5 +1,6 @@
 package com.skilldistillery.HuluAndHang.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -49,6 +50,26 @@ public class Genre {
 	public Genre() {
 		super();
 	}
+	
+	
+	public void addContent(Content content) {
+		if (this.contents == null) {
+			contents = new ArrayList<Content>();
+		}
+		if(! contents.contains(content)) {
+			contents.add(content);
+			content.addGenre(this);
+		}
+	}
+	
+	public void removeContent(Content content) {
+		if (contents != null && contents.contains(content)) {
+			contents.remove(content);
+			content.removeGenre(this);
+		}
+	}
+		
+		
 
 	@Override
 	public String toString() {
