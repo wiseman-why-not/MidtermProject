@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -13,12 +14,16 @@
 		<main class="container">
 			<section class="user-image">
 				<h3>${user.username}</h3>
+				<img src="https://media-exp1.licdn.com/dms/image/C4E03AQG97yrPw3MYzw/profile-displayphoto-shrink_800_800/0?e=1585180800&v=beta&t=_hCmt8WlG6r37DZSNR96m9BBpAiXfM3cMwOWRt3uEw0" alt="User Profile pic"/>
 			</section>
 			<section class="user-meta">
 				genre
 			</section>
 			<section class="user-description">
-				description
+				<c:if test="${empty user.description}">
+					<p>add something about yourself</p>
+				</c:if>
+				<p>${user.description}</p>
 			</section>
 			<section class="user-movies">
 				movies list

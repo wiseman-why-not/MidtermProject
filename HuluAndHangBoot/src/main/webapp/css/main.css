@@ -1,13 +1,22 @@
 body {
-	background-color: #202125;
 	position: relative;
 }
 
 header {
 	z-index: 1;
-	background-color: #02B075;
-	color: #ffffff;
 	position: fixed;
 	top: 0;
 	width: 100%;
+}
+
+nav {
+	display: flex;
+	justify-content: space-around;
+}
+
+h1 {
+  font-size: 72px;
+  background: -webkit-linear-gradient(315deg, #7ee8fa 0%, #80ff72 74%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
