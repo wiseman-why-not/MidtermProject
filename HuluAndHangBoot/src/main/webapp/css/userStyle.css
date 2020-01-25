@@ -1,0 +1,34 @@
+main {
+	margin-top: 100px;
+	min-height: 100vh;
+	display: grid;
+	grid-template-columns: 1fr 3fr;
+	grid-template-areas:
+		"userImage description"
+		"userMeta movieList"
+}
+
+section {
+	color: #ffffff;
+}
+
+.user-image {
+	border-radius: 10px;
+	background-color: #3393FF;
+	grid-area: userImage;
+	
+}
+
+.user-meta {
+	background-color: #3393FF;
+	grid-area: userMeta;
+}
+
+.user-description {
+	background-color: #3393FF;
+	grid-area: description;
+}
+
+.user-movies {
+	grid-area: movieList;
+}
