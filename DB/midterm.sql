@@ -46,7 +46,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `content` ;
 
 CREATE TABLE IF NOT EXISTS `content` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(45) NULL,
   `description` TEXT NULL,
   `img_url` VARCHAR(100) NULL,

@@ -157,7 +157,7 @@ public class Content {
 		this.createDate = createDate;
 	}
 	
-	public void addGenre(Genre genre) {
+	public List<Genre> addGenre(Genre genre) {
 		if (this.genres == null) {
 			genres = new ArrayList<Genre>();
 		}
@@ -165,13 +165,16 @@ public class Content {
 			genres.add(genre);
 			genre.addContent(this);
 		}
+		return genres;
+		
 	}
 	
-	public void removeGenre(Genre genre) {
+	public List<Genre> removeGenre(Genre genre) {
 		if (genres != null && genres.contains(genre)) {
 			genres.remove(genre);
 			genre.removeContent(this);
 		}
+		return genres;	
 	}
 
 	// TOSTRING AND HASH
