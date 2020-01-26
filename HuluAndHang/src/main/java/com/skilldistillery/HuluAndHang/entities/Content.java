@@ -12,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -217,7 +216,7 @@ public class Content {
 			user.removeContent(this);
 		}
 	}
-//	
+//   STRETCH GOAL TO DISPLAY ADD AND REMOVE SEASONS
 //	public void addSeason (Season season) {
 //		if (seasons == null) {
 //			seasons = new ArrayList<>();
@@ -276,7 +275,4 @@ public class Content {
 		return builder.toString();
 	}
 
-	
-
-	
 }
