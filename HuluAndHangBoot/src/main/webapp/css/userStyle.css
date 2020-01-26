@@ -10,7 +10,55 @@ main {
 		"userMeta movieList"
 }
 
-img {
+form {
+	height: 180px;
+}
+
+svg {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	fill: #ffffff;
+	height: 40px;
+	width: 40px;
+	cursor: pointer;
+	transition: 0.25s;
+	border: 1px solid #ffffff;
+	border-radius: 10px;
+	padding: 5px;
+}
+
+svg:hover {
+	fill: #5f0a87;
+	border: 1px solid #5f0a87;
+}
+
+textarea {
+	height: 100%;
+	width: 90%;
+	padding: 0;
+	margin: 0;
+	color: #ffffff;
+	background: none;
+	resize: none;
+	border-style: none; 
+    border-color: Transparent; 
+    overflow: auto;
+    outline: none;
+}
+
+.edit-description-section {
+	display: none;
+}
+
+.user-image img {
+	height: 150px;
+	width: 150px;
+	border-radius: 50%;
+	border: 1px solid #ffffff;
+}
+
+.user-image img {
 	height: 150px;
 	width: 150px;
 	border-radius: 50%;
@@ -45,6 +93,8 @@ section {
 }
 
 .user-description {
+	position: relative;
+	font-size: 3vw;
 	padding: 10px;
 	border-radius: 10px;
 	background-color: #4dbeff;
@@ -58,11 +108,43 @@ section {
 }
 
 .content-card {
-	padding: 10px;
+	position: relative;
+	height: 150px;
+	width: 100%;
 	border-radius: 10px;
 	margin-bottom: 10px;
 	color: #ffffff;
 	background-color: #a4508b;
 	background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%);
 	box-shadow: 1px 1px 17px -2px #727272;
+	overflow: hidden;
+	display: grid;
+	grid-template-rows: 1fr 3fr;
+	grid-template-areas:
+		"contenttitle"
+		"contentdescription";
+	
+}
+
+.content-image {
+	width: 60%;
+	position: absolute;
+	z-index: 0;
+	opacity: 0.5;
+	transform: rotate(25deg) translate(-40%, -20%);
+	box-shadow: inset -50px 0px 50px -30px #5f0a87;
+}
+
+.content-details {
+	position: relative;
+	padding: 10px;
+} 
+
+.content-details  h3 {
+	grid-area: contentdescription;
+} 
+
+.content-details  p {
+	font-size: 1.3em;
+	overflow: hidden;
 }

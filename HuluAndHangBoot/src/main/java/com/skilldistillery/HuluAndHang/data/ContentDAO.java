@@ -18,9 +18,9 @@ public interface ContentDAO {
 	
 	public Content updateById(int id, Content updateContent);
 	
-	public void addGenre(int contentId, int genreId);
-	
-	public void removeGenre(int contentId, int genreId);
+//	public void addGenre(int contentId, int genreId);
+//	
+//	public void removeGenre(int contentId, int genreId);
 	
 	public List<Content> findAll();
 	

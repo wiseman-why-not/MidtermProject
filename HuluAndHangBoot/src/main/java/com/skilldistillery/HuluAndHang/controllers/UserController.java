@@ -60,4 +60,12 @@ public class UserController {
 		session.setAttribute("user", null);
 		return "redirect:home.do";
 	}
+	
+	@RequestMapping(path = "updateDescription.do")
+	public String updateUserDescription(String description, HttpSession session) {
+		User user = (User)session.getAttribute("user");
+		dao.updateUserDescription(user, description);
+		session.setAttribute("user", dao.find(user.getId()));
+		return "redirect:user.do";
+	}
 }

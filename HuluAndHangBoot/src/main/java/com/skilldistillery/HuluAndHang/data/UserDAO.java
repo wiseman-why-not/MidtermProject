@@ -13,5 +13,7 @@ public interface UserDAO {
 	public User createUser(User user);
 
 	public boolean updateUser(User user);
+	
+	public boolean updateUserDescription(User user, String description);
 
 }
