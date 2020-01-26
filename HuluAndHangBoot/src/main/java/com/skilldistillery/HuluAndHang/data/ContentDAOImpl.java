@@ -84,8 +84,6 @@ public class ContentDAOImpl implements ContentDAO{
 		return content;	
 	}
 	
-	
-	
 	public void addGenre(int contentId, int genreId) {
 		// TODO Auto-generated method stub
 		Query query = em.createNativeQuery("insert into genre_content (content_id, genre_id) values (:contentId, :genreId);")
@@ -127,10 +125,9 @@ public class ContentDAOImpl implements ContentDAO{
 
 	@Override
 	public List<User> getUserListFromContent() {
-		String query = "SELECT content FROM Content JOIN FETCH cotnent.users JOIN FETCH content.genres";
+		String query = "SELECT content FROM Content JOIN FETCH content.users JOIN FETCH content.genres";
 		List<User> users = em.createQuery(query, User.class)
-				.getResultList();
-		
+				.getResultList();		
 		return users;
 	}
 	

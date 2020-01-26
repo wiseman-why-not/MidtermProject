@@ -9,9 +9,21 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
-<h4>Welcome ${uName}</h4>
+<h4>Welcome ${userName}</h4>
+
+<form action="returnUserDisplay.do" method="GET">
+<input type="submit" value="Home Page" />
+</form>
+
 <c:forEach var="m" items="${contents}">
 <h4>Title: ${m.title}</h4><br>
+
+<form action="movieDisplay.do" method="GET">
+<input type="hidden" value="${m.id}" name="mid"/>
+<input type="hidden" value="${user.id}" name="userId"/>
+<input type="submit" value="Select: ${m.title}" />
+</form>
+
 <p>${m.description}</p><br>
 <h4>Release Date: ${m.releaseDate}</h4><br>
 <img src= "https://image.tmdb.org/t/p/original${m.imageUrl}" height = 10% width= 10%>

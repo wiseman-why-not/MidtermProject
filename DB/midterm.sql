@@ -7,7 +7,6 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema midterm_db
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `midterm_db` ;
 
 -- -----------------------------------------------------
 -- Schema midterm_db
@@ -256,16 +255,12 @@ START TRANSACTION;
 USE `midterm_db`;
 INSERT INTO `favorite_content` (`user_id`, `content_id`) VALUES (1, 1);
 INSERT INTO `favorite_content` (`user_id`, `content_id`) VALUES (1, 2);
-INSERT INTO `favorite_content` (`user_id`, `content_id`) VALUES (1, 3);
-INSERT INTO `favorite_content` (`user_id`, `content_id`) VALUES (2, 1);
 INSERT INTO `favorite_content` (`user_id`, `content_id`) VALUES (2, 2);
 INSERT INTO `favorite_content` (`user_id`, `content_id`) VALUES (2, 3);
-INSERT INTO `favorite_content` (`user_id`, `content_id`) VALUES (3, 1);
-INSERT INTO `favorite_content` (`user_id`, `content_id`) VALUES (3, 2);
 INSERT INTO `favorite_content` (`user_id`, `content_id`) VALUES (3, 3);
-INSERT INTO `favorite_content` (`user_id`, `content_id`) VALUES (4, 1);
-INSERT INTO `favorite_content` (`user_id`, `content_id`) VALUES (4, 2);
-INSERT INTO `favorite_content` (`user_id`, `content_id`) VALUES (4, 3);
+INSERT INTO `favorite_content` (`user_id`, `content_id`) VALUES (3, 4);
+INSERT INTO `favorite_content` (`user_id`, `content_id`) VALUES (4, 4);
+INSERT INTO `favorite_content` (`user_id`, `content_id`) VALUES (4, 5);
 
 COMMIT;
 
@@ -305,6 +300,8 @@ INSERT INTO `user_genre` (`user_id`, `genre_id`) VALUES (3, 6);
 INSERT INTO `user_genre` (`user_id`, `genre_id`) VALUES (3, 7);
 INSERT INTO `user_genre` (`user_id`, `genre_id`) VALUES (4, 8);
 INSERT INTO `user_genre` (`user_id`, `genre_id`) VALUES (4, 9);
+INSERT INTO `user_genre` (`user_id`, `genre_id`) VALUES (5, 10);
+INSERT INTO `user_genre` (`user_id`, `genre_id`) VALUES (5, 11);
 
 COMMIT;
 
