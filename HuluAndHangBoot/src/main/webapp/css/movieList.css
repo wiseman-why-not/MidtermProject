@@ -49,3 +49,22 @@ button {
     height: 30px;
 }
 
+h2 {
+	color: white;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+a {
+	color: white;
+	text-decoration: none;
+}
+
+a:hover {
+	cursor: pointer;
+	text-decoration: none;
+}
+
+a:active {
+  cursor: wait;
+}
