@@ -57,8 +57,9 @@
 					<img class="content-image"
 						src="https://image.tmdb.org/t/p/original${content.imageUrl}"
 						alt="${content.title}" />
+					 
 					<article class="content-details">
-						<h3>${content.title}</h3>
+						<h3><a href="movieDisplay.do?title=${content.title }">${content.title}</a></h3>
 						<p>${content.description}</p>
 					</article>
 				</div>
