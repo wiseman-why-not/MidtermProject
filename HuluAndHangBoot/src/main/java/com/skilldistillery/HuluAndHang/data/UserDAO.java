@@ -15,5 +15,7 @@ public interface UserDAO {
 	public boolean updateUser(User user);
 	
 	public boolean updateUserDescription(User user, String description);
+	
+	public boolean removeFilmFromFavorites(int filmId, int userId);
 
 }

@@ -68,4 +68,11 @@ public class UserController {
 		session.setAttribute("user", dao.find(user.getId()));
 		return "redirect:user.do";
 	}
+	
+	@RequestMapping(path = "deleteFilmFromHome.do")
+	public String deleteFilmFromHome(int filmId,  HttpSession session) {
+		dao.removeFilmFromFavorites(filmId, ((User)session.getAttribute("user")).getId());
+		session.setAttribute("user", dao.find(((User)session.getAttribute("user")).getId()));
+		return "redirect:user.do";
+	}
 }

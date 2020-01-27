@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.HuluAndHang.entities.Content;
 import com.skilldistillery.HuluAndHang.entities.User;
 
 @Service
@@ -30,7 +31,6 @@ public class UserDAOImpl implements UserDAO {
 					.setParameter("username", username)
 					.setParameter("password", password)
 					.getSingleResult();
-			System.out.println(user);
 			user.getContents();
 			user.getGenres();
 			return user;
@@ -90,6 +90,14 @@ public class UserDAOImpl implements UserDAO {
 		}
 	}
 	
-	
-
+	public boolean removeFilmFromFavorites(int filmId, int userId) {
+		try {
+			Content content = em.find(Content.class, filmId);
+			User managedUser = em.find(User.class, userId);
+			managedUser.removeContent(content);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
 }
