@@ -89,4 +89,18 @@ public class UserController {
 		session.setAttribute("user", dao.find(((User)session.getAttribute("user")).getId()));
 		return "redirect:user.do";
 	}
+	
+	@RequestMapping(path = "addGenre.do")
+	public String addGenreToFavorite(int genreId,  HttpSession session) {
+		dao.addGenreToFavorites(genreId, ((User)session.getAttribute("user")).getId());
+		session.setAttribute("user", dao.find(((User)session.getAttribute("user")).getId()));
+		return "redirect:user.do";
+	}
+	
+	@RequestMapping(path = "removeGenre.do")
+	public String removeGenreFromFavorite(int genreId,  HttpSession session) {
+		dao.removeGenreFromFavorites(genreId, ((User)session.getAttribute("user")).getId());
+		session.setAttribute("user", dao.find(((User)session.getAttribute("user")).getId()));
+		return "redirect:user.do";
+	}
 }

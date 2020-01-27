@@ -18,10 +18,6 @@ main {
 	text-align: center;
 }
 
-.genre-form {
-	
-}
-
 svg {
 	position: absolute;
 	top: 5px;
@@ -182,4 +178,12 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.genre-form button {
+	position: relative;
+}
+
+.genre-form p{
+	color: #000000;
 }
