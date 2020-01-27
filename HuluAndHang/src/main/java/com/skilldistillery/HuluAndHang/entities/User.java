@@ -191,6 +191,23 @@ public class User {
 			content.removeUser(this);
 		}
 	}
+	
+	public void addGenre(Genre genre) {
+		if (this.genres == null) {
+			this.genres  = new ArrayList<>();
+		}
+		if(! this.genres .contains(genre)) {
+			this.genres .add(genre);
+			genre.addUser(this);
+		}
+	}
+	
+	public void removeGenre(Genre genre) {
+		if (this.genres  != null && this.genres .contains(genre)) {
+			this.genres.remove(genre);
+			genre.removeUser(this);
+		}
+	}
 
 	// toString
 

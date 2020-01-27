@@ -122,4 +122,28 @@ public class UserDAOImpl implements UserDAO {
 			return false;
 		}
 	}
+
+//	@Override
+//	public boolean removeGenreFromFavorites(int genreId, int userId) {
+//		try {
+//			Content content = em.find(Content.class, filmId);
+//			User managedUser = em.find(User.class, userId);
+//			managedUser.
+//			return true;
+//		} catch (Exception e) {
+//			return false;
+//		}
+//	}
+//
+//	@Override
+//	public boolean addGenreToFavorites(int genreId, int userId) {
+//		try {
+//			Content content = em.find(Content.class, filmId);
+//			User managedUser = em.find(User.class, userId);
+//			managedUser.addContent(content);
+//			return true;
+//		} catch (Exception e) {
+//			return false;
+//		}
+//	}
 }

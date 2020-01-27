@@ -17,16 +17,32 @@
 				<img src="https://media-exp1.licdn.com/dms/image/C4E03AQG97yrPw3MYzw/profile-displayphoto-shrink_800_800/0?e=1585180800&v=beta&t=_hCmt8WlG6r37DZSNR96m9BBpAiXfM3cMwOWRt3uEw0" alt="User Profile pic"/>
 			</section>
 			<section class="user-meta">
-				genre
-				<c:forEach var="genre" items="${user.genres}">
-					<h3>${genre.name}</h3>
+				<c:forEach var="genre" items="${genres}">
+					<c:if test="${user.genres.contains(genre)}">
+						<div>
+							<form class="genre-form">
+								<input type="hidden" value="${genre.id}" name="genre" />
+							</form>
+							<h3>${genre.name}</h3>
+						</div>
+					</c:if>
+					<c:if test="${!user.genres.contains(genre)}">
+						<div>
+							<form class="genre-form">
+								<input type="hidden" value="${genre.id}" name="genre" />
+							</form>
+							<h3>${genre.name} hello</h3>
+						</div>
+					</c:if>
 				</c:forEach>
 			</section>
 			<section class="user-description">
 				<div class="description-section">
 					<c:if test="${empty user.description}">
-						<button type="button">add something about yourself</button>
-						
+						<div class="no-description">
+							<button class="edit-description add-description-button" type="button">add something about yourself</button>
+							<p class="description"></p>
+						</div>
 					</c:if>
 					<c:if test="${!empty user.description}">
 						<svg class="edit-description" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 469.336 469.336" style="enable-background:new 0 0 469.336 469.336;" xml:space="preserve">

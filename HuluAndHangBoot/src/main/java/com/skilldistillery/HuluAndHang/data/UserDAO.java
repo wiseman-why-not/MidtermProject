@@ -25,5 +25,9 @@ public interface UserDAO {
 	public boolean removeFilmFromFavorites(int filmId, int userId);
 	
 	public boolean addFilmToFavorites(int filmdId, int userId);
+	
+//	public boolean removeGenreFromFavorites(int genreId, int userId);
+//	
+//	public boolean addGenreToFavorites(int genreId, int userId);
 
 }
