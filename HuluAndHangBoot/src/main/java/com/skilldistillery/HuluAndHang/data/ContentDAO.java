@@ -3,7 +3,6 @@ package com.skilldistillery.HuluAndHang.data;
 import java.util.List;
 
 import com.skilldistillery.HuluAndHang.entities.Content;
-import com.skilldistillery.HuluAndHang.entities.Genre;
 import com.skilldistillery.HuluAndHang.entities.User;
 
 public interface ContentDAO {
@@ -18,14 +17,16 @@ public interface ContentDAO {
 	
 	public Content updateById(int id, Content updateContent);
 	
-	public void addGenre(int contentId, int genreId);
-	
-	public void removeGenre(int contentId, int genreId);
+//	public void addGenre(int contentId, int genreId);
+//	
+//	public void removeGenre(int contentId, int genreId);
 	
 	public List<Content> findAll();
 	
-	public List<Content> search(String key);
+	public List<Content> search(String keyword);
 	
 	public List<User> getUserListFromContent();
+	
+	public List<Content> getContentByGenreId(int genreId);
 	
 }

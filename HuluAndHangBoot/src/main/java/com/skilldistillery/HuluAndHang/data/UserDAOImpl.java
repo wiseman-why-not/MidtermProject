@@ -18,16 +18,9 @@ import com.skilldistillery.HuluAndHang.entities.User;
 @Service
 @Transactional
 public class UserDAOImpl implements UserDAO {
-	
-	private List<User> users;
-	private User user;
-	
-	//@PersistenceContext
-	//private EntityManager em;
-	
-	EntityManagerFactory emf =
-	Persistence.createEntityManagerFactory("midterm");
-	EntityManager em = emf.createEntityManager();
+
+	@PersistenceContext
+	private EntityManager em;
 
 	@Override
 	public User find(int id) {
@@ -38,9 +31,11 @@ public class UserDAOImpl implements UserDAO {
 	public User findByLogin(String username, String password) {
 		String query = "SELECT user FROM User user WHERE user.username = :username AND user.userPassword = :password";
 		try {
-			User user =  em.createQuery(query, User.class).setParameter("username", username)
-					.setParameter("password", password).getSingleResult();
-			//System.out.println(user);
+			User user = em.createQuery(query, User.class)
+					.setParameter("username", username)
+					.setParameter("password", password)
+					.getSingleResult();
+			System.out.println(user);
 			user.getContents();
 			user.getGenres();
 			return user;
@@ -51,9 +46,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public User createUser(User user) {
-		System.out.println(user);
 		em.persist(user);
-		System.out.println(user);
 		return user;
 	}
 
@@ -86,6 +79,19 @@ public class UserDAOImpl implements UserDAO {
 			return false;
 		} catch (Exception e) {
 			return true;
+		}
+	}
+
+	@Override
+	public boolean updateUserDescription(User user, String description) {
+		try {
+			User managedUser = em.find(User.class, user.getId());
+			System.out.println(managedUser);
+			System.out.println(description);
+			managedUser.setDescription(description);
+			return true;
+		} catch (Exception e) {
+			return false;
 		}
 	}
 	

@@ -1,8 +1,5 @@
 package com.skilldistillery.HuluAndHang.controllers;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,32 +18,28 @@ import com.skilldistillery.HuluAndHang.entities.User;
 
 @Controller
 public class ContentController {
-	
+
 	@Autowired
 	private ContentDAO dao;
-	
-	@Autowired	
-	private UserDAO userDao;
-	
-	private List<Content> contents;
-	private List<Genre> genres;
-	private List<User> users;
-	private String userName;
-	private User user;
-	private Content content;
-	private Integer userId;
-	
-	
+
 	@RequestMapping(path = "movie.do")
-	public String movieList(HttpSession session, Model model){
-		contents = new ArrayList<Content>();
-		user = (User)session.getAttribute("user");
-		contents = dao.findAll();
-		userName = user.getFirstName().toUpperCase();
-		model.addAttribute("userName", userName);
-		model.addAttribute("contents", contents);
-		model.addAttribute("user", user);
-		return "movieList";		
+	public String movieList(HttpSession session, Model model) {
+//		list all films in the movielist.jsp page. DO NOT EDIT
+		model.addAttribute("contents", dao.findAll());
+		return "movieList";
+	}
+	
+	@RequestMapping(path = "filterByGenre.do")
+	public String listOfFilmsByGenre(@RequestParam("genreId") Integer genreId, Model model) {
+		
+		model.addAttribute("contents", dao.getContentByGenreId(genreId));
+		return "movieList";
+	}
+  
+	@RequestMapping(path = "bykeyword.do")
+	public String searchByKeyword(@RequestParam("keyword") String keyword, Model model) {
+		model.addAttribute("contents", dao.search(keyword));
+		return "movieList";
 	}
 	
 	@RequestMapping(path = "movieDisplay.do")
