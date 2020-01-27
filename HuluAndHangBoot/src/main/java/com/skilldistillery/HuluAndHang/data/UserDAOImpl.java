@@ -112,26 +112,14 @@ public class UserDAOImpl implements UserDAO {
 		return users;
 	}
 	
-//	public List<User> findByFavoriteContent(int contentId){
-//		users = new ArrayList<User>();
-//		List<Integer> ids = new ArrayList<Integer>();
-//		Query query = em.createNativeQuery("select favorite_content.user_id from favorite_content where favorite_content.content_id = :contentId")
-//		.setParameter("contentId", contentId);
-//		ids = (List<Integer>) query.getResultList();
-//		for(int id : ids) {
-//		user = em.find(User.class, id); 
-//		users.add(user);
-//		}
-//		return users;
-//	}
-	
-//	public void addFavoriteContent(int contentId, int userId) {
-//		Query query = em.createNativeQuery("insert into favorite_content (content_id, user_id) values (5, 1)");
-//		//.setParameter("contentId",contentId)
-//		//.setParameter("userId",userId);
-//		em.getTransaction().begin();
-//		query.executeUpdate();
-//		em.flush();
-//		em.getTransaction().commit();
-//	}
+	public boolean addFilmToFavorites(int filmId, int userId) {
+		try {
+			Content content = em.find(Content.class, filmId);
+			User managedUser = em.find(User.class, userId);
+			managedUser.addContent(content);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
 }
