@@ -19,26 +19,28 @@
 	<main>
 		<section>
 			<div>
-			<!-- formaction="movie.do" formmethod="get"    formaction="filterByGenre.do" formmethod="get"   -->
-<!-- 				<form  action="movie.do" method="get" name="listAllMovies">
-					<button type="submit" form="listAllMovies" formaction="movie.do" formmethod="get" >All Movies</button>
-				</form> -->
 				
 				<a href="movie.do" class="allContent">All Movies</a>
 				
 				<form action="filterByGenre.do" method="get" name="filterMoviesForm">
-				<input list="genres" name="genreName">
-				<datalist id="genres" >
+				<input list="genres" name="genreName" placeholder="Genre">
+				<datalist id="genres">
 					<c:forEach var="genre" items="${genres }">
 						<option value="${genre.name }">
 					</c:forEach>
 				</datalist>
 				<button type="submit">Filter by Genre</button>
 				</form>
+				
+				<form action="byKeyword.do" method="post">
+				<input type="text" name="keyword" placeholder="Title">
+				<button type="submit">Search</button>
+				</form>
 			</div>
 		</section>
 		<br>
 	<!-- display the list of movies -->
+		<c:if test="${! empty contents }">
 		<section class="user-movies">
 			<c:forEach var="content" items="${contents}">
 				<div class="content-card">
@@ -53,6 +55,12 @@
 				</div>
 			</c:forEach>
 			</section>
+			</c:if>
+			<c:if test="${empty contents }">
+			<div>
+				<h2 class="nothingFound">Nothing Found</h2>
+			</div>
+			</c:if>
 	</main>
 	<jsp:include page="footer.jsp"></jsp:include>
 	<jsp:include page="bottomScript.jsp"></jsp:include>
