@@ -107,24 +107,23 @@ public class UserDAOImpl implements UserDAO {
   
 	public List<User> findAll(){
 		String jpql ="select u from User u";
-		users = new ArrayList<User>();
-		users = em.createQuery(jpql, User.class)
+		List<User> users = em.createQuery(jpql, User.class)
 		.getResultList();
 		return users;
 	}
 	
-	public List<User> findByFavoriteContent(int contentId){
-		users = new ArrayList<User>();
-		List<Integer> ids = new ArrayList<Integer>();
-		Query query = em.createNativeQuery("select favorite_content.user_id from favorite_content where favorite_content.content_id = :contentId")
-		.setParameter("contentId", contentId);
-		ids = (List<Integer>) query.getResultList();
-		for(int id : ids) {
-		user = em.find(User.class, id); 
-		users.add(user);
-		}
-		return users;
-	}
+//	public List<User> findByFavoriteContent(int contentId){
+//		users = new ArrayList<User>();
+//		List<Integer> ids = new ArrayList<Integer>();
+//		Query query = em.createNativeQuery("select favorite_content.user_id from favorite_content where favorite_content.content_id = :contentId")
+//		.setParameter("contentId", contentId);
+//		ids = (List<Integer>) query.getResultList();
+//		for(int id : ids) {
+//		user = em.find(User.class, id); 
+//		users.add(user);
+//		}
+//		return users;
+//	}
 	
 //	public void addFavoriteContent(int contentId, int userId) {
 //		Query query = em.createNativeQuery("insert into favorite_content (content_id, user_id) values (5, 1)");

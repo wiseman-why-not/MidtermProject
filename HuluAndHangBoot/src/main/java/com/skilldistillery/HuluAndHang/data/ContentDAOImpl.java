@@ -73,6 +73,7 @@ public class ContentDAOImpl implements ContentDAO {
 		List<User> users = em.createQuery(query, User.class)
 				.getResultList();		
 		return users;
+	}
 	
 	@Override
 	public List<Content> getContentByGenreId(int genreId) {
