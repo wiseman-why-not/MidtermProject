@@ -59,7 +59,7 @@
 						alt="${content.title}" />
 					 
 					<article class="content-details">
-						<h3><a href="movieDisplay.do?title=${content.title }">${content.title}</a></h3>
+						<h2 class="contentTitle"><a href="movieDisplay.do?title=${content.title }">${content.title}</a></h2>
 						<p>${content.description}</p>
 					</article>
 				</div>
