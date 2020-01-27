@@ -81,7 +81,5 @@ public class ContentDAOImpl implements ContentDAO {
 		return em.createQuery(query, Content.class).setParameter("genreId", genreId)
 				.getResultList();
 	}
-	
-	 
 
 }
