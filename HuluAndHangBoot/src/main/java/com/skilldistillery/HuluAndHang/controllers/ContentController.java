@@ -9,12 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.skilldistillery.HuluAndHang.data.ContentDAO;
-import com.skilldistillery.HuluAndHang.data.ContentDAOImpl;
-import com.skilldistillery.HuluAndHang.data.UserDAO;
-import com.skilldistillery.HuluAndHang.data.UserDAOImpl;
 import com.skilldistillery.HuluAndHang.entities.Content;
-import com.skilldistillery.HuluAndHang.entities.Genre;
-import com.skilldistillery.HuluAndHang.entities.User;
 
 @Controller
 public class ContentController {
@@ -43,8 +38,8 @@ public class ContentController {
 	}
 
 	@RequestMapping(path = "movieDisplay.do")
-	public String movieDisplay(@RequestParam Integer mid, Integer userId, Model model) {
-		Content content = dao.findById(mid);
+	public String movieDisplay(@RequestParam("title") String title, Model model) {
+		Content content = dao.findByTitle(title);
 		model.addAttribute("content", content);
 		return "movieDisplay";
 	}
@@ -63,10 +58,4 @@ public class ContentController {
 		return "movieDislike";
 	}
 
-//	@RequestMapping(path = "returnMovieList.do")
-//	public String returnMovieList(HttpSession session, Model model) {
-//		user = (User) session.getAttribute("user");
-//		List<Content> contents = dao.findAll();
-//		return "movieList";
-//	}
 }

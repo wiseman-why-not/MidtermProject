@@ -11,7 +11,7 @@ public interface ContentDAO {
 	
 	public void createContent(Content content);
 	
-	public List<Content> findByTitle(String title);
+	public Content findByTitle(String title);
 	
 	public boolean deleteById(int id);
 	
