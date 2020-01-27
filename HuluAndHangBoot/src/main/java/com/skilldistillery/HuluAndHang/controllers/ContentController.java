@@ -28,78 +28,45 @@ public class ContentController {
 		model.addAttribute("contents", dao.findAll());
 		return "movieList";
 	}
-	
+
 	@RequestMapping(path = "filterByGenre.do")
 	public String listOfFilmsByGenre(@RequestParam("genreId") Integer genreId, Model model) {
-		
+
 		model.addAttribute("contents", dao.getContentByGenreId(genreId));
 		return "movieList";
 	}
-  
+
 	@RequestMapping(path = "bykeyword.do")
 	public String searchByKeyword(@RequestParam("keyword") String keyword, Model model) {
 		model.addAttribute("contents", dao.search(keyword));
 		return "movieList";
 	}
-	
+
 	@RequestMapping(path = "movieDisplay.do")
-	public String movieDisplay(@RequestParam Integer mid, Integer userId, Model model){
-		content = dao.findById(mid);
-		user = userDao.find(userId);
-		userName = user.getFirstName().toUpperCase();
-		model.addAttribute("userName", userName);
-		model.addAttribute("content", content);	
-		model.addAttribute("user", user);
-		return "movieDisplay";		
-	}
-	
-	@RequestMapping(path = "movieLike.do")
-	public String movieLike(@RequestParam Integer mid, Integer userId, Model model){
-		content = dao.findById(mid);
-		user = userDao.find(userId);
-		user.addContent(content);
-		user.setContents(user.getContents());
-		userName = user.getFirstName().toUpperCase();
-		users = new ArrayList<User>();
-		users = userDao.findByFavoriteContent(content.getId());
-		model.addAttribute("userName", userName);
-		model.addAttribute("user", user);
-		model.addAttribute("users", users);
+	public String movieDisplay(@RequestParam Integer mid, Integer userId, Model model) {
+		Content content = dao.findById(mid);
 		model.addAttribute("content", content);
-		return "movieLike";		
-	}
-	
-	@RequestMapping(path = "movieDislike.do")
-	public String movieDislist(@RequestParam Integer mid, Integer userId, Model model){
-		content = dao.findById(mid);
-		user = userDao.find(userId);
-		user.removeContent(content);
-		user.setContents(user.getContents());
-		userName = user.getFirstName().toUpperCase();
-		contents = user.getContents();
-		model.addAttribute("userName", userName);
-		model.addAttribute("user", user);
-		model.addAttribute("content", content);
-		model.addAttribute("contents", contents);
-		return "movieDislike";	
-	}
-		@RequestMapping(path = "returnUserDisplay.do")
-		public String returnUserDisplay(HttpSession session, Model model) {
-			user = (User)session.getAttribute("user");
-			model.addAttribute("user", user);
-			return "userDisplay";
-		}
-		
-		@RequestMapping(path = "returnMovieList.do")
-		public String returnMovieList(HttpSession session, Model model) {
-			contents = new ArrayList<Content>();
-			user = (User)session.getAttribute("user");
-			contents = dao.findAll();
-			userName = user.getFirstName().toUpperCase();
-			model.addAttribute("userName", userName);
-			model.addAttribute("contents", contents);
-			model.addAttribute("user", user);
-			return "movieList";
-		}
+		return "movieDisplay";
 	}
 
+	@RequestMapping(path = "movieLike.do")
+	public String movieLike(@RequestParam Integer mid, Integer userId, Model model) {
+		Content content = dao.findById(mid);
+		model.addAttribute("content", content);
+		return "movieLike";
+	}
+
+	@RequestMapping(path = "movieDislike.do")
+	public String movieDislist(@RequestParam Integer mid, Integer userId, Model model) {
+		Content content = dao.findById(mid);
+		model.addAttribute("content", content);
+		return "movieDislike";
+	}
+
+//	@RequestMapping(path = "returnMovieList.do")
+//	public String returnMovieList(HttpSession session, Model model) {
+//		user = (User) session.getAttribute("user");
+//		List<Content> contents = dao.findAll();
+//		return "movieList";
+//	}
+}
