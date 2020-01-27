@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.skilldistillery.HuluAndHang.data.ContentDAO;
+import com.skilldistillery.HuluAndHang.data.GenreDAO;
 import com.skilldistillery.HuluAndHang.entities.Content;
 
 @Controller
@@ -16,11 +17,15 @@ public class ContentController {
 
 	@Autowired
 	private ContentDAO dao;
+	@Autowired
+	private GenreDAO genreDAO;
 
 	@RequestMapping(path = "movie.do")
 	public String movieList(HttpSession session, Model model) {
 //		list all films in the movielist.jsp page. DO NOT EDIT
 		model.addAttribute("contents", dao.findAll());
+//		need to list all genres for my filter by genre button		
+		model.addAttribute("genres", genreDAO.findAll());
 		return "movieList";
 	}
 
