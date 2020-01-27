@@ -91,29 +91,29 @@ class ContentDAOImplTest {
 		assertEquals("trailer", content.getTrailerUrl());		
 	}
 	
-	@Test
-	@DisplayName("testing content dao addGenre")
-	void test5() {
-		dao = new ContentDAOImpl();
-		dao.addGenre(6, 2);
-		content = dao.findById(6);
-		List<Genre> genres = new ArrayList<Genre>();
-		genres = content.getGenres();
-		//System.out.println(genres.toString());
-		assertEquals(2, genres.get(0).getId());
-	}
-	
-	@Test
-	@DisplayName("testing content dao removeGenre")
-	void test6() {
-		dao = new ContentDAOImpl();
-		dao.removeGenre(6, 2);
-		content = dao.findById(6);
-		List<Genre> genres = new ArrayList<Genre>();
-		genres = content.getGenres();
-		//System.out.println(genres.toString());
-		assertEquals(0, genres.size());
-	}
+//	@Test
+//	@DisplayName("testing content dao addGenre")
+//	void test5() {
+//		dao = new ContentDAOImpl();
+//		dao.addGenre(6, 2);
+//		content = dao.findById(6);
+//		List<Genre> genres = new ArrayList<Genre>();
+//		genres = content.getGenres();
+//		//System.out.println(genres.toString());
+//		assertEquals(2, genres.get(0).getId());
+//	}
+//	
+//	@Test
+//	@DisplayName("testing content dao removeGenre")
+//	void test6() {
+//		dao = new ContentDAOImpl();
+//		dao.removeGenre(6, 2);
+//		content = dao.findById(6);
+//		List<Genre> genres = new ArrayList<Genre>();
+//		genres = content.getGenres();
+//		//System.out.println(genres.toString());
+//		assertEquals(0, genres.size());
+//	}
 	
 	@Test
 	@DisplayName("testing content dao findAll")
