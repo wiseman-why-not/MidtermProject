@@ -35,7 +35,7 @@ public class ContentController {
 		return "movieList";
 	}
 
-	@RequestMapping(path = "bykeyword.do")
+	@RequestMapping(path = "byKeyword.do")
 	public String searchByKeyword(@RequestParam("keyword") String keyword, Model model) {
 		model.addAttribute("contents", dao.search(keyword));
 		return "movieList";
