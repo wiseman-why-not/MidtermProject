@@ -2,7 +2,7 @@
 
 .content-card {
     position: relative;
-    height: 150px;
+    height: 160px;
     width: 100%;
     border-radius: 10px;
     margin-bottom: 10px;
@@ -23,7 +23,7 @@
     position: absolute;
     z-index: 0;
     opacity: 0.5;
-    transform: rotate(25deg) translate(-40%, -20%);
+    transform: rotate(45deg) translate(-40%, -20%);
     box-shadow: inset -50px 0px 50px -30px #5f0a87;
 }
 .content-details {
@@ -47,5 +47,39 @@ button {
     display: inline-block;
     width: 200px;
     height: 30px;
+}
+
+h2 {
+	color: white;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+a {
+	color: white;
+	text-decoration: none;
+}
+
+a:hover {
+	cursor: pointer;
+	text-decoration: none;
+}
+
+a:active {
+  cursor: wait;
+}
+
+.allContent {
+  background-color: #a4508b;
+  color: white;
+  padding: 1em 1.5em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.nothingFound {
+	text-align: center;
+	color: #7ff3bc;
+	
 }
 

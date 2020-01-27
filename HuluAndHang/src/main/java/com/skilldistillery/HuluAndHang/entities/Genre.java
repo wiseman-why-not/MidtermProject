@@ -11,6 +11,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 @Entity
 public class Genre {
 	
@@ -37,12 +40,13 @@ public class Genre {
 		this.name = name;
 	}
 	
-	@ManyToMany(mappedBy="genres", fetch=FetchType.EAGER)
+	@ManyToMany(mappedBy="genres")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	List<Content> contents;
 	
 	@ManyToMany(mappedBy="genres")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	List<User> users;
-
 
 	public List<Content> getContents() {
 		return contents;
@@ -82,6 +86,23 @@ public class Genre {
 			content.removeGenre(this);
 		}
 		return contents;
+	}
+	
+	public void addUser(User user) {
+		if (this.users == null) {
+			this.users  = new ArrayList<>();
+		}
+		if(! this.users .contains(user)) {
+			this.users .add(user);
+			user.addGenre(this);
+		}
+	}
+	
+	public void removeUser(User user) {
+		if (this.users  != null && this.users .contains(user)) {
+			this.users.remove(user);
+			user.removeGenre(this);
+		}
 	}
 		
 		

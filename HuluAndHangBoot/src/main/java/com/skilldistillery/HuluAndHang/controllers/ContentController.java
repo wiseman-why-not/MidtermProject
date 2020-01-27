@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.skilldistillery.HuluAndHang.data.ContentDAO;
 import com.skilldistillery.HuluAndHang.data.UserDAO;
+import com.skilldistillery.HuluAndHang.data.GenreDAO;
 import com.skilldistillery.HuluAndHang.entities.Content;
 import com.skilldistillery.HuluAndHang.entities.User;
 
@@ -21,21 +22,25 @@ public class ContentController {
 	
 	@Autowired
 	private UserDAO userDao;
+	@Autowired
+	private GenreDAO genreDAO;
 
 	@RequestMapping(path = "movie.do")
 	public String movieList(HttpSession session, Model model) {
 //		list all films in the movielist.jsp page. DO NOT EDIT
 		model.addAttribute("contents", dao.findAll());
+//		need to list all genres for my filter by genre button		
+		model.addAttribute("genres", genreDAO.findAll());
 		return "movieList";
 	}
 
 	@RequestMapping(path = "filterByGenre.do")
-	public String listOfFilmsByGenre(@RequestParam("genreId") Integer genreId, Model model) {
-		model.addAttribute("contents", dao.getContentByGenreId(genreId));
+	public String listOfFilmsByGenre(@RequestParam("genreName") String genreName, Model model) {
+		model.addAttribute("contents", dao.filterByGenre(genreName));
 		return "movieList";
 	}
 
-	@RequestMapping(path = "bykeyword.do")
+	@RequestMapping(path = "byKeyword.do")
 	public String searchByKeyword(@RequestParam("keyword") String keyword, Model model) {
 		model.addAttribute("contents", dao.search(keyword));
 		return "movieList";

@@ -10,8 +10,12 @@ main {
 		"userMeta movieList"
 }
 
-form {
+.description-form {
 	height: 180px;
+}
+
+.user-meta h3 {
+	text-align: center;
 }
 
 svg {
@@ -103,6 +107,12 @@ section {
 	box-shadow: 1px 1px 17px -2px #727272;
 }
 
+
+.description {
+	width: 90%;
+}
+
+
 .user-movies {
 	grid-area: movieList;
 }
@@ -147,4 +157,33 @@ section {
 .content-details  p {
 	font-size: 1.3em;
 	overflow: hidden;
+}
+
+.description-section {
+	 height: 100%;
+}
+
+.add-description-button {
+	margin: 10px;
+	border-radius: 10px;
+	color: #7ff3bc;
+	border: 1px solid #7ff3bc;
+	padding: 5px;
+	font-weight: bold;
+	background-color: transparent;
+}
+
+.no-description {
+	 height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.genre-form button {
+	position: relative;
+}
+
+.genre-form p{
+	color: #000000;
 }
