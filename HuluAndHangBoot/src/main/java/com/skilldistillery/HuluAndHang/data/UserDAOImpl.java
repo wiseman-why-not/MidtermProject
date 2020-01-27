@@ -13,6 +13,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.HuluAndHang.entities.Content;
+import com.skilldistillery.HuluAndHang.entities.Genre;
 import com.skilldistillery.HuluAndHang.entities.User;
 
 @Service
@@ -117,6 +118,30 @@ public class UserDAOImpl implements UserDAO {
 			Content content = em.find(Content.class, filmId);
 			User managedUser = em.find(User.class, userId);
 			managedUser.addContent(content);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean removeGenreFromFavorites(int genreId, int userId) {
+		try {
+			Genre genre = em.find(Genre.class, genreId);
+			User managedUser = em.find(User.class, userId);
+			managedUser.removeGenre(genre);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean addGenreToFavorites(int genreId, int userId) {
+		try {
+			Genre genre = em.find(Genre.class, genreId);
+			User managedUser = em.find(User.class, userId);
+			managedUser.addGenre(genre);
 			return true;
 		} catch (Exception e) {
 			return false;
