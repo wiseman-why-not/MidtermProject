@@ -16,6 +16,13 @@ public class GenreController {
 	return "WEB-INF/index.jsp";
 	}
 	
+	@RequestMapping(path="filterByGenre.do")
+	public String filterByGenre(Model model) {
+	// need to return to a page that just shows the list of film
+	// page will look very similar to movieList.jsp
+	// separate page now, but will attempt to make into one page.
+	return "WEB-INF/FIXME.jsp";
+	}
 
 
 }

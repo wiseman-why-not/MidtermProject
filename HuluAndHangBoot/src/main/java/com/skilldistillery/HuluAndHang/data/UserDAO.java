@@ -19,5 +19,9 @@ public interface UserDAO {
 	public List<User> findAll();
 	
 	public List<User> findByFavoriteContent(int contentId);
+  
+	public boolean updateUserDescription(User user, String description);
+	
+	public boolean removeFilmFromFavorites(int filmId, int userId);
 
 }
