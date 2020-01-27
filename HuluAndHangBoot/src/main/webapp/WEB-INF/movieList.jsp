@@ -25,8 +25,8 @@
 				<form action="filterByGenre.do" method="get" name="filterMoviesForm">
 				<input list="genres" name="genreName" placeholder="Genre">
 				<datalist id="genres">
-					<c:forEach var="genre" items="${genres }">
-						<option value="${genre.name }">
+					<c:forEach var="genre" items="${genres}">
+						<option value="${genre.name}">
 					</c:forEach>
 				</datalist>
 				<button type="submit">Filter by Genre</button>
