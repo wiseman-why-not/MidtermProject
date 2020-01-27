@@ -28,11 +28,11 @@ public class ContentDAOImpl implements ContentDAO {
 		em.persist(content);
 	}
 	
-	public List<Content> findByTitle(String title) {
+	public Content findByTitle(String title) {
 		String jpql ="SELECT content from Content content where content.title = :title";
 		return em.createQuery(jpql, Content.class)
 		.setParameter("title",title)
-		.getResultList();
+		.getSingleResult();
 	}
 	
 	public boolean deleteById(int id) {
