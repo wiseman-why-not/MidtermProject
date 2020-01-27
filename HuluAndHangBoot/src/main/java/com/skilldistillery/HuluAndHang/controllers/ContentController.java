@@ -9,14 +9,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.skilldistillery.HuluAndHang.data.ContentDAO;
+import com.skilldistillery.HuluAndHang.data.UserDAO;
 import com.skilldistillery.HuluAndHang.data.GenreDAO;
 import com.skilldistillery.HuluAndHang.entities.Content;
+import com.skilldistillery.HuluAndHang.entities.User;
 
 @Controller
 public class ContentController {
 
 	@Autowired
 	private ContentDAO dao;
+	
+	@Autowired
+	private UserDAO userDao;
 	@Autowired
 	private GenreDAO genreDAO;
 
@@ -42,24 +47,32 @@ public class ContentController {
 	}
 
 	@RequestMapping(path = "movieDisplay.do")
-	public String movieDisplay(@RequestParam("title") String title, Model model) {
+	public String movieDisplay(@RequestParam("title") String title, Model model, HttpSession session) {
 		Content content = dao.findByTitle(title);
+		User user = (User) session.getAttribute("user");
 		model.addAttribute("content", content);
+		model.addAttribute("user", user);
 		return "movieDisplay";
 	}
 
 	@RequestMapping(path = "movieLike.do")
 	public String movieLike(@RequestParam Integer mid, Integer userId, Model model) {
+		userDao.addFilmToFavorites(mid, userId);
 		Content content = dao.findById(mid);
+		User user = userDao.find(userId);
 		model.addAttribute("content", content);
-		return "movieLike";
+		model.addAttribute("user", user);
+		return "movieDisplay";
 	}
 
 	@RequestMapping(path = "movieDislike.do")
-	public String movieDislist(@RequestParam Integer mid, Integer userId, Model model) {
+	public String movieDislist(@RequestParam Integer mid, Integer userId, Model model) {		
+		userDao.removeFilmFromFavorites(mid, userId);
+		User user = userDao.find(userId);
 		Content content = dao.findById(mid);
 		model.addAttribute("content", content);
-		return "movieDislike";
+		model.addAttribute("user", user);
+		return "movieDisplay";
 	}
 
 }

@@ -100,11 +100,12 @@ class ContentDAOImplTest {
 //		content = dao.findById(6);
 //		List<Genre> genres = new ArrayList<Genre>();
 //		genres = content.getGenres();
+//		//System.out.println(genres.toString());
 //		assertEquals(2, genres.get(0).getId());
 //	}
 //	
 //	@Test
-//	@Disabled
+//	@Disable
 //	@DisplayName("testing content dao removeGenre")
 //	void test6() {
 //		dao = new ContentDAOImpl();
@@ -112,6 +113,10 @@ class ContentDAOImplTest {
 //		content = dao.findById(6);
 //		List<Genre> genres = new ArrayList<Genre>();
 //		genres = content.getGenres();
+//		//System.out.println(genres.toString());
+//		assertEquals(0, genres.size());
+//	}
+	
 //		assertEquals(0, genres.size());
 //	}
 //	
