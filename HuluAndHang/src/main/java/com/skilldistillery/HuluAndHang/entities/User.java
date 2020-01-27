@@ -13,6 +13,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 @Entity
 public class User {
 
@@ -50,9 +53,11 @@ public class User {
 	private Boolean adminPrivleges = false;
 	
 	@ManyToMany(mappedBy = "users")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Content> contents;
 	
 	@ManyToMany
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@JoinTable(name="user_genre",
 	joinColumns = @JoinColumn(name="user_id"),
 	inverseJoinColumns=@JoinColumn(name="genre_id"))

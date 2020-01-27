@@ -35,7 +35,6 @@ public class UserDAOImpl implements UserDAO {
 					.setParameter("username", username)
 					.setParameter("password", password)
 					.getSingleResult();
-			System.out.println(user);
 			user.getContents();
 			user.getGenres();
 			return user;
@@ -95,6 +94,17 @@ public class UserDAOImpl implements UserDAO {
 		}
 	}
 	
+	public boolean removeFilmFromFavorites(int filmId, int userId) {
+		try {
+			Content content = em.find(Content.class, filmId);
+			User managedUser = em.find(User.class, userId);
+			managedUser.removeContent(content);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+  
 	public List<User> findAll(){
 		String jpql ="select u from User u";
 		users = new ArrayList<User>();
