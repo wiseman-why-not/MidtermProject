@@ -38,6 +38,10 @@ public class Genre {
 	
 	@ManyToMany(mappedBy="genres")
 	List<Content> contents;
+	
+	@ManyToMany(mappedBy="genres")
+	List<User> users;
+
 
 	public List<Content> getContents() {
 		return contents;
@@ -45,6 +49,14 @@ public class Genre {
 
 	public void setContents(List<Content> contents) {
 		this.contents = contents;
+	}
+	
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
 
 	public Genre() {
