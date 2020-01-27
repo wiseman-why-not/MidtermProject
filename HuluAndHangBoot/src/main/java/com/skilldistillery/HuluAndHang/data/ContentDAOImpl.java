@@ -54,23 +54,6 @@ public class ContentDAOImpl implements ContentDAO {
 		return content;	
 	}
 	
-	
-	
-//	public void addGenre(int contentId, int genreId) {
-//		Query query = em.createNativeQuery("insert into genre_content (content_id, genre_id) values (:contentId, :genreId);")
-//		.setParameter("contentId",contentId)
-//		.setParameter("genreId",genreId);
-//		query.executeUpdate();
-//		em.flush();
-//	}
-//	
-//	public void removeGenre(int contentId, int genreId) {
-//		Query query = em.createNativeQuery("delete from genre_content where content_id = :contentId and genre_id = :genreId")
-//		.setParameter("contentId",contentId)
-//		.setParameter("genreId",genreId);
-//		em.flush();
-//	}
-	
 	public List<Content> findAll(){
 		String jpql ="SELECT content from Content content";
 		return em.createQuery(jpql, Content.class)
@@ -86,10 +69,10 @@ public class ContentDAOImpl implements ContentDAO {
 
 	@Override
 	public List<User> getUserListFromContent() {
-		String query = "SELECT content FROM Content content JOIN FETCH contnent.users JOIN FETCH content.genres";
-		return em.createQuery(query, User.class)
-				.getResultList();
-	}
+		String query = "SELECT content FROM Content JOIN FETCH content.users JOIN FETCH content.genres";
+		List<User> users = em.createQuery(query, User.class)
+				.getResultList();		
+		return users;
 	
 	@Override
 	public List<Content> getContentByGenreId(int genreId) {
