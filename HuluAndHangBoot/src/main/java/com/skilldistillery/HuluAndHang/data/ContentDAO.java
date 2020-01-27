@@ -28,5 +28,7 @@ public interface ContentDAO {
 	public List<User> getUserListFromContent();
 	
 	public List<Content> getContentByGenreId(int genreId);
+
+	List<Content> filterByGenre(String genreName);
 	
 }

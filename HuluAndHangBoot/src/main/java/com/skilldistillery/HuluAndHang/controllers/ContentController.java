@@ -30,9 +30,8 @@ public class ContentController {
 	}
 
 	@RequestMapping(path = "filterByGenre.do")
-	public String listOfFilmsByGenre(@RequestParam("genreId") Integer genreId, Model model) {
-
-		model.addAttribute("contents", dao.getContentByGenreId(genreId));
+	public String listOfFilmsByGenre(@RequestParam("genreName") String genreName, Model model) {
+		model.addAttribute("contents", dao.filterByGenre(genreName));
 		return "movieList";
 	}
 

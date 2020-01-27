@@ -1,6 +1,8 @@
 package com.skilldistillery.HuluAndHang.data;
 
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -9,6 +11,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.HuluAndHang.entities.Content;
+import com.skilldistillery.HuluAndHang.entities.Genre;
 import com.skilldistillery.HuluAndHang.entities.User;
 
 
@@ -80,6 +83,15 @@ public class ContentDAOImpl implements ContentDAO {
 		String query = "SELECT genre.contents FROM Genre genre WHERE genre.id = :genreId";
 		return em.createQuery(query, Content.class).setParameter("genreId", genreId)
 				.getResultList();
+	}
+	
+	@Override
+	public List<Content> filterByGenre(String genreName) {
+		String query = "SELECT genre FROM Genre genre WHERE genre.name = :genreName";
+		Genre genre = em.createQuery(query, Genre.class).setParameter("genreName", genreName).getSingleResult();
+		List<Content> filteredContent = findAll();
+		return filteredContent.stream().filter(x -> x.getGenres().contains(genre)).collect(Collectors.toList());
+		
 	}
 
 }

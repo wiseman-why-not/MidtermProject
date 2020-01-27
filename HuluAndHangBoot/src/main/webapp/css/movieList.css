@@ -68,3 +68,11 @@ a:hover {
 a:active {
   cursor: wait;
 }
+
+.allContent {
+  background-color: #a4508b;
+  color: white;
+  padding: 1em 1.5em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
