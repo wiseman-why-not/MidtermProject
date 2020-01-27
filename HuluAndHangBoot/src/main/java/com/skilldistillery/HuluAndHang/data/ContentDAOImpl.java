@@ -87,10 +87,14 @@ public class ContentDAOImpl implements ContentDAO {
 	
 	@Override
 	public List<Content> filterByGenre(String genreName) {
-		String query = "SELECT genre FROM Genre genre WHERE genre.name = :genreName";
-		Genre genre = em.createQuery(query, Genre.class).setParameter("genreName", genreName).getSingleResult();
-		List<Content> filteredContent = findAll();
-		return filteredContent.stream().filter(x -> x.getGenres().contains(genre)).collect(Collectors.toList());
+		try {
+			String query = "SELECT genre FROM Genre genre WHERE genre.name = :genreName";
+			Genre genre = em.createQuery(query, Genre.class).setParameter("genreName", genreName).getSingleResult();
+			List<Content> filteredContent = findAll();
+			return filteredContent.stream().filter(x -> x.getGenres().contains(genre)).collect(Collectors.toList());
+		} catch (Exception e) {
+			return null;
+		}
 		
 	}
 
