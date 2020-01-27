@@ -1,11 +1,8 @@
 package com.skilldistillery.HuluAndHang.data;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
@@ -25,15 +22,17 @@ public class GenreDAOImpl implements GenreDAO{
 	}
 	
 	public List<Genre> findAll(){
-		String jpql ="select g from Genre g";
+		String jpql ="select genre from Genre genre";
 		return em.createQuery(jpql, Genre.class)
 		.getResultList();
 	}
 
 	public List<Genre> findByName(String name) {
-		String jpql ="select g from Genre g where g.name = :name";
+		String jpql ="SELECT genre from Genre genre where genre.name = :name";
 		return em.createQuery(jpql, Genre.class)
 		.setParameter("name",name)
 		.getResultList();
 	}
+	
+	
 }
