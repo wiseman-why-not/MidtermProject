@@ -19,33 +19,21 @@
 	<main>
 		<section>
 			<div>
-				<form  id="filterMoviesForm">
-				<button type="submit" form="filterMoviesForm" 
-						formaction="movie.do" formmethod="get">All Movies</button>
-				<input list="genres">
-				<datalist id="genres">
-					<option value="Action">
-					<option value="Adventure">
-					<option value="Animation">
-					<option value="Comedy">
-					<option value="Crime">
-					<option value="Documentary">
-					<option value="Drama">
-					<option value="Family">
-					<option value="Fantasy">
-					<option value="History">
-					<option value="Horror">
-					<option value="Music">
-					<option value="Mystery">
-					<option value="Romance">
-					<option value="Science Fiction">
-					<option value="TV Movie">
-					<option value="Thriller">
-					<option value="War">
-					<option value="Western">
+			<!-- formaction="movie.do" formmethod="get"    formaction="filterByGenre.do" formmethod="get"   -->
+<!-- 				<form  action="movie.do" method="get" name="listAllMovies">
+					<button type="submit" form="listAllMovies" formaction="movie.do" formmethod="get" >All Movies</button>
+				</form> -->
+				
+				<a href="movie.do" class="allContent">All Movies</a>
+				
+				<form action="filterByGenre.do" method="get" name="filterMoviesForm">
+				<input list="genres" name="genreName">
+				<datalist id="genres" >
+					<c:forEach var="genre" items="${genres }">
+						<option value="${genre.name }">
+					</c:forEach>
 				</datalist>
-				<button type="submit" form="filterMoviesForm" 
-					formaction="filterByGenre.do" formmethod="get">Filter by Genre</button>
+				<button type="submit">Filter by Genre</button>
 				</form>
 			</div>
 		</section>
@@ -59,7 +47,7 @@
 						alt="${content.title}" />
 					 
 					<article class="content-details">
-						<h3><a href="movieDisplay.do?title=${content.title }">${content.title}</a></h3>
+						<h2 class="contentTitle"><a href="movieDisplay.do?title=${content.title }">${content.title}</a></h2>
 						<p>${content.description}</p>
 					</article>
 				</div>

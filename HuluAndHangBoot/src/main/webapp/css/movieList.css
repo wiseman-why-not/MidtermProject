@@ -49,3 +49,30 @@ button {
     height: 30px;
 }
 
+h2 {
+	color: white;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+a {
+	color: white;
+	text-decoration: none;
+}
+
+a:hover {
+	cursor: pointer;
+	text-decoration: none;
+}
+
+a:active {
+  cursor: wait;
+}
+
+.allContent {
+  background-color: #a4508b;
+  color: white;
+  padding: 1em 1.5em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
