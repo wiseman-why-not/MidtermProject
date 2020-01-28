@@ -140,3 +140,18 @@ button {
     height: 30px;
 }
 
+.displayFullView h1 {
+	 font-size: 72px;
+	  background: -webkit-linear-gradient(315deg, #7ee8fa 0%, #80ff72 95%);
+	  -webkit-background-clip: text;
+	  -webkit-text-fill-color: transparent;
+}
+
+.displayButtons {
+	float: right;
+}
+
+.likeDislikeButton {
+	display: flex;
+	justify-content: space-around;
+}
