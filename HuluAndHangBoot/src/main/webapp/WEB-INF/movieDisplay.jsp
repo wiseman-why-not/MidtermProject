@@ -24,8 +24,7 @@
 
 <section class="movie-image">
 
-<iframe   width="420" height="345" src="https://image.tmdb.org/t/p/original${content.imageUrl}">
-</iframe>
+<img  width="420" height="345" src="https://image.tmdb.org/t/p/original${content.imageUrl}">
 
 </section>
 
@@ -41,7 +40,7 @@
 <c:set var="favorite" value= "true" />
 <p>Hulu and Hang with:</p>
 <c:forEach var="u"   items="${content.getUsers()}">
-<p>${u.firstName} ${u.lastName} ${u.email}</p>
+<h5><a href="userHang.do?id=${u.id}">${u.firstName} ${u.lastName} ${u.email}</a></h5>
 </c:forEach>
 <form action="movieDislike.do" method="POST">
 <input type="hidden" value="${content.id}" name="mid" />
@@ -50,7 +49,6 @@
 </form> 
 </c:if>
 </c:forEach>
-
 <c:if test="${favorite == false}">
 <form action="movieLike.do" method="POST">
 <input type="hidden" value="${content.id}" name="mid" />
@@ -60,7 +58,6 @@
 </c:if>
 </div>
 </section>
-
 <jsp:include page="footer.jsp"></jsp:include>
 	<jsp:include page="bottomScript.jsp"></jsp:include>
 </body>
