@@ -7,6 +7,7 @@
 		<meta charset="UTF-8">
 		<title>User Hang</title>
 		<jsp:include page="topStyle.jsp"></jsp:include>
+		
 		<link rel="stylesheet" href="./css/userStyle.css">
 	</head>
 	<body>
@@ -18,6 +19,8 @@
 				<img src="https://media-exp1.licdn.com/dms/image/C4E03AQG97yrPw3MYzw/profile-displayphoto-shrink_800_800/0?e=1585180800&v=beta&t=_hCmt8WlG6r37DZSNR96m9BBpAiXfM3cMwOWRt3uEw0" alt="User Profile pic"/>
 			</section>
 			<section class="user-meta">
+			<div class = "userHangName">${user.firstName} ${user.lastName}</div>
+			<div class = "userHangEmail">${user.email}</div>
 			<c:if test="${empty user.genres}">
 						<p>genres is empty</p>					
 					</c:if>

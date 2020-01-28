@@ -216,3 +216,16 @@ a:hover {
 	height: 30px;
 	align-items: center;
 }
+
+.userHangName{
+	text-align: center;
+	font-family: roboto;
+	font-size: 20px;	
+}
+
+.userHangEmail{
+	text-align: center;
+	font-family: roboto;
+	font-size: 20px;
+	color: green;
+}
