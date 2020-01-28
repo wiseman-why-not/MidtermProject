@@ -38,10 +38,10 @@
 			<c:if test="${! empty contents }">
 				<section class="user-movies">
 					<c:forEach var="content" items="${contents}">
-						<a href="movieDisplay.do?title=${content.title }">
+						<a href="movieDisplay.do?title=${content.title}">
 							<div class="content-card">
 								<img class="content-image"
-									src="https://image.tmdb.org/t/p/original${content.imageUrl}"
+									src="${content.imageUrl}"
 									alt="${content.title}" />
 		
 								<article class="content-details">
