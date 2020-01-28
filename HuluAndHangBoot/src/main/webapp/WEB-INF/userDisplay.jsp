@@ -5,7 +5,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Insert title here</title>
+		<title>Hulu&Hang</title>
 		<jsp:include page="topStyle.jsp"></jsp:include>
 		<link rel="stylesheet" href="./css/userStyle.css">
 	</head>

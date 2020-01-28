@@ -9,8 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.skilldistillery.HuluAndHang.data.ContentDAO;
 import com.skilldistillery.HuluAndHang.data.GenreDAO;
 import com.skilldistillery.HuluAndHang.data.UserDAO;
+import com.skilldistillery.HuluAndHang.entities.Content;
 import com.skilldistillery.HuluAndHang.entities.Genre;
 import com.skilldistillery.HuluAndHang.entities.User;
 
@@ -21,6 +23,9 @@ public class UserController {
 	
 	@Autowired
 	private GenreDAO genreDao;
+	
+	@Autowired
+	private ContentDAO contentDao;
 	
 	
 	@RequestMapping(path = "user.do")
