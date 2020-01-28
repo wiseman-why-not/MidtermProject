@@ -140,3 +140,7 @@ button {
     height: 30px;
 }
 
+nav {
+	display: flex;
+	justify-content: space-around;
+}

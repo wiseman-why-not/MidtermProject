@@ -42,19 +42,15 @@
 <c:forEach var="u"   items="${content.getUsers()}">
 <h5><a href="userHang.do?id=${u.id}">${u.firstName} ${u.lastName} ${u.email}</a></h5>
 </c:forEach>
-<form action="movieDislike.do" method="POST">
-<input type="hidden" value="${content.id}" name="mid" />
-<input type="hidden" value="${user.id}" name="userId" />
-<input type="submit" value="Dislike: ${content.title}" />
-</form> 
+<nav>
+<h5><a href="movieDislike.do?mid=${content.id}&userId=${user.id}">Dislike: ${content.title}</a></h5>
+</nav> 
 </c:if>
 </c:forEach>
 <c:if test="${favorite == false}">
-<form action="movieLike.do" method="POST">
-<input type="hidden" value="${content.id}" name="mid" />
-<input type="hidden" value="${user.id}" name="userId" />
-<input type="submit" value="Like: ${content.title}" />
-</form> 
+<nav>
+<h5><a href="movieLike.do?mid=${content.id}&userId=${user.id}">Like: ${content.title}</a></h5>
+</nav>
 </c:if>
 </div>
 </section>
