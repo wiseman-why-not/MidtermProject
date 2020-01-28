@@ -28,18 +28,49 @@ public class UserController {
 	private ContentDAO contentDao;
 	
 	
+//	@RequestMapping(path = "user.do")
+//	public String userPage(HttpSession session, Model model) {
+//		if(session.getAttribute("user") == null) {
+//			return "index";
+//		}
+//		List<Genre> genres = genreDao.findAll();
+//		User user = dao.find(((User)session.getAttribute("user")).getId());
+//		model.addAttribute("genres", genres);
+//		model.addAttribute("user", user);
+//		return "userDisplay";
+//	}
+	
 	@RequestMapping(path = "user.do")
 	public String userPage(HttpSession session, Model model) {
-		if(session.getAttribute("user") == null) {
+		List<Genre> genres = genreDao.findAll();
+
+		User adminUser = (User) session.getAttribute("user");
+		if (adminUser.getAdminPrivleges() && adminUser != null) {
+			List<User> allUsers = dao.findAll();
+			List<Content> allContent = contentDao.findAll();
+			model.addAttribute("users", allUsers);
+			model.addAttribute("contents", allContent);
+			return "adminPage";
+		}
+		else if(session.getAttribute("user") == null) {
 			return "index";
 		}
-		List<Genre> genres = genreDao.findAll();
-		User user = dao.find(((User)session.getAttribute("user")).getId());
 		model.addAttribute("genres", genres);
-		model.addAttribute("user", user);
+
 		return "userDisplay";
 	}
 	
+	@RequestMapping(path = "deactivate.do")
+	public String deactivateUser(HttpSession session, Integer userId) {
+		dao.deactivateAccount(userId);
+		return "adminPage";
+	}
+	@RequestMapping(path = "reactivate.do")
+	public String reactivateUser(HttpSession session, Integer userId) {
+		dao.reactivateAccount(userId);
+		return "adminPage";
+	}
+
 	@RequestMapping(path = { "/", "home.do" })
 	public String loginPage(HttpSession session){
 		if(session.getAttribute("user") == null) {
