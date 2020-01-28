@@ -19,8 +19,6 @@ import org.hibernate.annotations.LazyCollectionOption;
 @Entity
 public class User {
 
-	// FIELDS
-
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	private Integer id;
@@ -63,8 +61,9 @@ public class User {
 	inverseJoinColumns=@JoinColumn(name="genre_id"))
 	private List<Genre> genres;
 	
-
-	// GETTERS | SETTERS | METHODS | CONSTRUCTORS
+	public User() {
+		super();
+	}
 
 	public List<Genre> getGenres() {
 		return genres;
@@ -72,10 +71,6 @@ public class User {
 
 	public void setGenres(List<Genre> genres) {
 		this.genres = genres;
-	}
-
-	public User() {
-		super();
 	}
 
 	public Integer getId() {
@@ -209,8 +204,6 @@ public class User {
 		}
 	}
 
-	// toString
-
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", username=" + username
@@ -218,7 +211,5 @@ public class User {
 				+ age + ", description=" + description + ", isActive=" + isActive + ", adminPrivleges=" + adminPrivleges
 				+ " genres" + this.genres + " contents" + this.contents + "]";
 	}
-
-
 
 }

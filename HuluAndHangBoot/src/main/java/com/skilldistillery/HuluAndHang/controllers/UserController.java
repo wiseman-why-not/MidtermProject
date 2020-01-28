@@ -30,23 +30,13 @@ public class UserController {
 	
 	@RequestMapping(path = "user.do")
 	public String userPage(HttpSession session, Model model) {
-		List<Genre> genres = genreDao.findAll();
-		
-		User adminUser = (User) session.getAttribute("user");
-		if (adminUser.getAdminPrivleges() && adminUser != null) {
-			List<User> allUsers = dao.findAll();
-			List<Content> allContent = contentDao.findAll();
-			model.addAttribute("users", allUsers);
-			model.addAttribute("contents", allContent);
-			return "userDisplay";
-		}
-		else if(session.getAttribute("user") == null) {
+		if(session.getAttribute("user") == null) {
 			return "index";
 		}
+		List<Genre> genres = genreDao.findAll();
+		User user = dao.find(((User)session.getAttribute("user")).getId());
 		model.addAttribute("genres", genres);
-		
-		
-		
+		model.addAttribute("user", user);
 		return "userDisplay";
 	}
 	

@@ -48,6 +48,10 @@ public class Genre {
 	@LazyCollection(LazyCollectionOption.FALSE)
 	List<User> users;
 
+	public Genre() {
+		super();
+	}
+	
 	public List<Content> getContents() {
 		return contents;
 	}
@@ -64,10 +68,6 @@ public class Genre {
 		this.users = users;
 	}
 
-	public Genre() {
-		super();
-	}
-	
 	
 	public List<Content> addContent(Content content) {
 		if (this.contents == null) {
@@ -137,6 +137,4 @@ public class Genre {
 		return true;
 	}
 	
-	
-
 }
