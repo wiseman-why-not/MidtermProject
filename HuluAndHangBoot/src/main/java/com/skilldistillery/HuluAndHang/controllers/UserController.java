@@ -25,11 +25,13 @@ public class UserController {
 	
 	@RequestMapping(path = "user.do")
 	public String userPage(HttpSession session, Model model) {
-		List<Genre> genres = genreDao.findAll();
 		if(session.getAttribute("user") == null) {
 			return "index";
 		}
+		List<Genre> genres = genreDao.findAll();
+		User user = dao.find(((User)session.getAttribute("user")).getId());
 		model.addAttribute("genres", genres);
+		model.addAttribute("user", user);
 		return "userDisplay";
 	}
 	

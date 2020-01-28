@@ -26,12 +26,12 @@ public class ContentController {
 	
 	@Autowired
 	private UserDAO userDao;
+	
 	@Autowired
 	private GenreDAO genreDAO;
 
 	@RequestMapping(path = "movie.do")
 	public String movieList(HttpSession session, Model model) {
-//		list all films in the movielist.jsp page. DO NOT EDIT
 		model.addAttribute("contents", dao.findAll());	
 		session.setAttribute("genres", genreDAO.findAll());
 		return "movieList";

@@ -5,7 +5,6 @@
 		<nav>
 			<a href="user.do">Home</a>
 			<a href="movie.do">Movie</a>
-			<a href="genre.do">Genre</a>
 			<a href="logout.do">log out</a>
 		</nav>
 	</c:if>

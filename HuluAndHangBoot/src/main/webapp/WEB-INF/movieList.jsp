@@ -17,20 +17,9 @@
 	<jsp:include page="header.jsp"></jsp:include>
 
 	<main>
-		<section>
-			<div>
-
+		<section class="filter">
 				<a href="movie.do" class="allContent">All Movies</a>
-
-				<form action="filterByGenre.do" method="get" name="filterMoviesForm">
-
-				<input list="genres" name="genreName" placeholder="Genre">
-				<datalist id="genres">
-					<c:forEach var="genre" items="${genres}">
-						<option value="${genre.name}">
-					</c:forEach>
-				</datalist>
-				<button type="submit">Filter by Genre</button>
+				<form action="filterByGenre.do" method="get" name="filterMoviesForm" class="by-genres">
 
 					<select name="genreName">
 						<c:forEach var="genre" items="${genres }">
@@ -38,40 +27,40 @@
 						</c:forEach>
 					</select>
 					<button type="submit">Filter by Genre</button>
-
 				</form>
-
-				<form action="byKeyword.do" method="post">
+				<form action="byKeyword.do" method="post" class="by-title">
 					<input type="text" name="keyword" placeholder="Title">
 					<button type="submit">Search</button>
 				</form>
-			</div>
 		</section>
-		<br>
-		<!-- display the list of movies -->
-		<c:if test="${! empty contents }">
-			<section class="user-movies">
-				<c:forEach var="content" items="${contents}">
-					<div class="content-card">
-						<img class="content-image"
-							src="https://image.tmdb.org/t/p/original${content.imageUrl}"
-							alt="${content.title}" />
-
-						<article class="content-details">
-							<h2 class="contentTitle">
-								<a href="movieDisplay.do?title=${content.title }">${content.title}</a>
-							</h2>
-							<p>${content.description}</p>
-						</article>
-					</div>
-				</c:forEach>
-			</section>
-		</c:if>
-		<c:if test="${empty contents }">
-			<div>
-				<h2 class="nothingFound">Nothing Found</h2>
-			</div>
-		</c:if>
+		<section class="container">
+			<!-- display the list of movies -->
+			<c:if test="${! empty contents }">
+				<section class="user-movies">
+					<c:forEach var="content" items="${contents}">
+						<a href="movieDisplay.do?title=${content.title }">
+							<div class="content-card">
+								<img class="content-image"
+									src="https://image.tmdb.org/t/p/original${content.imageUrl}"
+									alt="${content.title}" />
+		
+								<article class="content-details">
+									<h2 class="contentTitle">
+										${content.title}
+									</h2>
+									<p>${content.description}</p>
+								</article>
+							</div>
+						</a>
+					</c:forEach>
+				</section>
+			</c:if>
+			<c:if test="${empty contents }">
+				<div>
+					<h2 class="nothingFound">Nothing Found</h2>
+				</div>
+			</c:if>
+		</section>
 	</main>
 	<jsp:include page="footer.jsp"></jsp:include>
 	<jsp:include page="bottomScript.jsp"></jsp:include>

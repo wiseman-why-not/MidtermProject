@@ -17,8 +17,6 @@ import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 public class Content {
-
-	// FIELDS
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -57,21 +55,6 @@ public class Content {
 	joinColumns = @JoinColumn(name ="content_id"),
 	inverseJoinColumns = @JoinColumn(name="user_id"))
 	private List<User> users;
-	
-//	@OneToMany(mappedBy="content")
-//	private List<Season> seasons;
-	
-	
-	// CONSTRUCTORS
-	
-	
-	public List<User> getUsers() {
-		return users;
-	}
-
-	public void setUsers(List<User> users) {
-		this.users = users;
-	}
 
 	public Content() {
 		super();
@@ -89,10 +72,14 @@ public class Content {
 		this.releaseDate = releaseDate;
 		this.createDate = createDate;
 	}
-
-	// METHODS 
 	
-	// GETTERS AND SETTERS
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
 	
 	public int getId() {
 		return id;
@@ -173,15 +160,6 @@ public class Content {
 		this.genres = genres;
 	}
 	
-//	public List<Season> getSeasons() {
-//		return seasons;
-//	}
-//
-//	public void setSeasons(List<Season> seasons) {
-//		this.seasons = seasons;
-//	}
-	
-	// ADDERS AND REMOVERS
 	public void addGenre(Genre genre) {
 		if (this.genres == null) {
 			genres = new ArrayList<>();
@@ -216,32 +194,6 @@ public class Content {
 			user.removeContent(this);
 		}
 	}
-//   STRETCH GOAL TO DISPLAY ADD AND REMOVE SEASONS
-//	public void addSeason (Season season) {
-//		if (seasons == null) {
-//			seasons = new ArrayList<>();
-//		}
-//		if (!seasons.contains(season)) {
-//			seasons.add(season);
-//			if(season.getContent() != null){
-//				season.getContent().getSeasons().remove(season);
-//			}
-//		}
-//			season.setContent(this);
-//	}
-//	
-//	public void removeSeason(Season season){
-//		season.setContent(null);
-//		if(seasons != null){
-//			seasons.remove(season);
-//		}
-//
-//	
-//	}
-	
-
-
-	// TOSTRING AND HASH
 	
 	@Override
 	public int hashCode() {
