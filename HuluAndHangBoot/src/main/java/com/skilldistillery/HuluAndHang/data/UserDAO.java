@@ -30,4 +30,8 @@ public interface UserDAO {
 	
 	public boolean addGenreToFavorites(int genreId, int userId);
 
+	boolean deactivateAccount(Integer userId);
+
+	boolean reactivateAccount(Integer userId);
+
 }

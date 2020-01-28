@@ -58,17 +58,31 @@
 	<section class="user-movies">
 				<c:forEach var="user" items="${users}">
 					<div class="content-card">
-						<img class="content-image" src=""https://media-exp1.licdn.com/dms/image/C4E03AQG97yrPw3MYzw/profile-displayphoto-shrink_800_800/0?e=1585180800&v=beta&t=_hCmt8WlG6r37DZSNR96m9BBpAiXfM3cMwOWRt3uEw0" alt="${content.title}" />
+						<img class="content-image" src=""https://media-exp1.licdn.com/dms/image/C4E03AQG97yrPw3MYzw/profile-displayphoto-shrink_800_800/0?e=1585180800&v=beta&t=_hCmt8WlG6r37DZSNR96m9BBpAiXfM3cMwOWRt3uEw0" alt="${user.firstName}" />
 						<article class="content-details">
-							<h3>${user.firstName + " " + user.lastName} </h3>
+							<h3>${user.firstName} </h3>
 							<p>Account: ${user.isActive}</p>
+							
+							<c:if test="${user.isActive }">
+							<form action="deactivate.do" method="post">
+								<input type="hidden" value="${user.id }" name="userId">
+								<button type="submit" >DeActivate</button>
+							</form>
+							</c:if>
+							<c:if test="${!user.isActive }">
+							<form action="reactivate.do" method="post">
+							<input type="hidden" value="${user.id }" name="userId">
+							<button type="submit" >ReActivate</button>
+							</form>
+							</c:if>
+							
 						</article>
 					</div>
 				</c:forEach>
 			</section>
 	
 <!-- 	A list of all movies -->
-	<section class="user-movies">
+<%-- 	<section class="user-movies">
 				<c:forEach var="content" items="${contents}">
 					<div class="content-card">
 						<img class="content-image" src="https://image.tmdb.org/t/p/original${content.imageUrl}" alt="${content.title}" />
@@ -86,7 +100,9 @@
 						</form>
 					</div>
 				</c:forEach>
-			</section>
+			</section> --%>
+			
+	<!-- end of move list	 -->	
 	</c:if>
 </main>
 <jsp:include page="footer.jsp"></jsp:include>
