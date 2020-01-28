@@ -13,6 +13,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.HuluAndHang.entities.Content;
+import com.skilldistillery.HuluAndHang.entities.Genre;
 import com.skilldistillery.HuluAndHang.entities.User;
 
 @Service
@@ -107,32 +108,43 @@ public class UserDAOImpl implements UserDAO {
   
 	public List<User> findAll(){
 		String jpql ="select u from User u";
-		users = new ArrayList<User>();
-		users = em.createQuery(jpql, User.class)
+		List<User> users = em.createQuery(jpql, User.class)
 		.getResultList();
 		return users;
 	}
 	
-	public List<User> findByFavoriteContent(int contentId){
-		users = new ArrayList<User>();
-		List<Integer> ids = new ArrayList<Integer>();
-		Query query = em.createNativeQuery("select favorite_content.user_id from favorite_content where favorite_content.content_id = :contentId")
-		.setParameter("contentId", contentId);
-		ids = (List<Integer>) query.getResultList();
-		for(int id : ids) {
-		user = em.find(User.class, id); 
-		users.add(user);
+	public boolean addFilmToFavorites(int filmId, int userId) {
+		try {
+			Content content = em.find(Content.class, filmId);
+			User managedUser = em.find(User.class, userId);
+			managedUser.addContent(content);
+			return true;
+		} catch (Exception e) {
+			return false;
 		}
-		return users;
 	}
-	
-//	public void addFavoriteContent(int contentId, int userId) {
-//		Query query = em.createNativeQuery("insert into favorite_content (content_id, user_id) values (5, 1)");
-//		//.setParameter("contentId",contentId)
-//		//.setParameter("userId",userId);
-//		em.getTransaction().begin();
-//		query.executeUpdate();
-//		em.flush();
-//		em.getTransaction().commit();
-//	}
+
+	@Override
+	public boolean removeGenreFromFavorites(int genreId, int userId) {
+		try {
+			Genre genre = em.find(Genre.class, genreId);
+			User managedUser = em.find(User.class, userId);
+			managedUser.removeGenre(genre);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean addGenreToFavorites(int genreId, int userId) {
+		try {
+			Genre genre = em.find(Genre.class, genreId);
+			User managedUser = em.find(User.class, userId);
+			managedUser.addGenre(genre);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
 }

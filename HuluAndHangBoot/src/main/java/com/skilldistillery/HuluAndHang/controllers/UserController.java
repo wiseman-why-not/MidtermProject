@@ -1,11 +1,19 @@
 package com.skilldistillery.HuluAndHang.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.skilldistillery.HuluAndHang.data.ContentDAO;
+import com.skilldistillery.HuluAndHang.data.GenreDAO;
 import com.skilldistillery.HuluAndHang.data.UserDAO;
+import com.skilldistillery.HuluAndHang.entities.Content;
+import com.skilldistillery.HuluAndHang.entities.Genre;
 import com.skilldistillery.HuluAndHang.entities.User;
 
 @Controller
@@ -13,9 +21,22 @@ public class UserController {
 	@Autowired
 	private UserDAO dao;
 	
+	@Autowired
+	private GenreDAO genreDao;
+	
+	@Autowired
+	private ContentDAO contentDao;
+	
 	
 	@RequestMapping(path = "user.do")
-	public String userPage(HttpSession session) {
+	public String userPage(HttpSession session, Model model) {
+		if(session.getAttribute("user") == null) {
+			return "index";
+		}
+		List<Genre> genres = genreDao.findAll();
+		User user = dao.find(((User)session.getAttribute("user")).getId());
+		model.addAttribute("genres", genres);
+		model.addAttribute("user", user);
 		return "userDisplay";
 	}
 	
@@ -72,6 +93,20 @@ public class UserController {
 	@RequestMapping(path = "deleteFilmFromHome.do")
 	public String deleteFilmFromHome(int filmId,  HttpSession session) {
 		dao.removeFilmFromFavorites(filmId, ((User)session.getAttribute("user")).getId());
+		session.setAttribute("user", dao.find(((User)session.getAttribute("user")).getId()));
+		return "redirect:user.do";
+	}
+	
+	@RequestMapping(path = "addGenre.do")
+	public String addGenreToFavorite(int genreId,  HttpSession session) {
+		dao.addGenreToFavorites(genreId, ((User)session.getAttribute("user")).getId());
+		session.setAttribute("user", dao.find(((User)session.getAttribute("user")).getId()));
+		return "redirect:user.do";
+	}
+	
+	@RequestMapping(path = "removeGenre.do")
+	public String removeGenreFromFavorite(int genreId,  HttpSession session) {
+		dao.removeGenreFromFavorites(genreId, ((User)session.getAttribute("user")).getId());
 		session.setAttribute("user", dao.find(((User)session.getAttribute("user")).getId()));
 		return "redirect:user.do";
 	}

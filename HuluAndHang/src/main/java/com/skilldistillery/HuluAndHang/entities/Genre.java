@@ -11,6 +11,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 @Entity
 public class Genre {
 	
@@ -37,9 +40,18 @@ public class Genre {
 		this.name = name;
 	}
 	
-	@ManyToMany(mappedBy="genres", fetch=FetchType.EAGER)
+	@ManyToMany(mappedBy="genres")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	List<Content> contents;
+	
+	@ManyToMany(mappedBy="genres")
+	@LazyCollection(LazyCollectionOption.FALSE)
+	List<User> users;
 
+	public Genre() {
+		super();
+	}
+	
 	public List<Content> getContents() {
 		return contents;
 	}
@@ -47,11 +59,15 @@ public class Genre {
 	public void setContents(List<Content> contents) {
 		this.contents = contents;
 	}
-
-	public Genre() {
-		super();
-	}
 	
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
+
 	
 	public List<Content> addContent(Content content) {
 		if (this.contents == null) {
@@ -70,6 +86,23 @@ public class Genre {
 			content.removeGenre(this);
 		}
 		return contents;
+	}
+	
+	public void addUser(User user) {
+		if (this.users == null) {
+			this.users  = new ArrayList<>();
+		}
+		if(! this.users .contains(user)) {
+			this.users .add(user);
+			user.addGenre(this);
+		}
+	}
+	
+	public void removeUser(User user) {
+		if (this.users  != null && this.users .contains(user)) {
+			this.users.remove(user);
+			user.removeGenre(this);
+		}
 	}
 		
 		
@@ -104,6 +137,4 @@ public class Genre {
 		return true;
 	}
 	
-	
-
 }

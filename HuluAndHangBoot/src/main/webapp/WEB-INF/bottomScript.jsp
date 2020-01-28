@@ -4,11 +4,11 @@
 <script>
 	window.addEventListener("scroll", () => {
 		let header = document.querySelector("header");
-		if(window.scrollY > 31 && header.classList.contains("fullView")) {
+		if(window.scrollY > 20 && header.classList.contains("fullView")) {
 			console.log("bye")
 			header.classList.remove("fullView")
 			header.classList.add("collapseView")
-		} else if(window.scrollY < 30 && header.classList.contains("collapseView")){
+		} else if(window.scrollY < 19 && header.classList.contains("collapseView")){
 			console.log("hello")
 			header.classList.remove("collapseView")
 			header.classList.add("fullView")

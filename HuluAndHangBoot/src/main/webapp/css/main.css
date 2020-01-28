@@ -1,5 +1,9 @@
 body {
 	position: relative;
+	background-color: #202125;
+	min-height: 100vh;
+	padding-top: 120px;
+	padding-bottom: 120px;
 }
 
 header {
@@ -13,6 +17,7 @@ header {
 	justify-content: space-between;
 	padding: 0 20px 0 20px;
 }
+
 
 nav {
 	display: flex;
@@ -57,7 +62,7 @@ nav a:hover {
 }
 
 h1 {
-	transition: 0.25s;
+	transition: 0.5s;
 }
 
 .fullView h1 {
@@ -83,7 +88,11 @@ h1 {
 }
 
 footer {
-	height: 75px;
+	width: 100%;
+	position: absolute;
+    margin-top: 50px;
+    bottom: 0;
+	height: 100px;
 	text-align: center;
 	background: -webkit-linear-gradient(315deg, #7ee8fa 0%, #80ff72 74%);
 }

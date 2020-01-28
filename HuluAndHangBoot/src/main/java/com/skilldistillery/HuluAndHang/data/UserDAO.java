@@ -18,10 +18,16 @@ public interface UserDAO {
 	
 	public List<User> findAll();
 	
-	public List<User> findByFavoriteContent(int contentId);
+//	public List<User> findByFavoriteContent(int contentId);
   
 	public boolean updateUserDescription(User user, String description);
 	
 	public boolean removeFilmFromFavorites(int filmId, int userId);
+	
+	public boolean addFilmToFavorites(int filmdId, int userId);
+	
+	public boolean removeGenreFromFavorites(int genreId, int userId);
+	
+	public boolean addGenreToFavorites(int genreId, int userId);
 
 }

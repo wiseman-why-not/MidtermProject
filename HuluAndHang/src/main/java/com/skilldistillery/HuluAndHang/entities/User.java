@@ -19,8 +19,6 @@ import org.hibernate.annotations.LazyCollectionOption;
 @Entity
 public class User {
 
-	// FIELDS
-
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	private Integer id;
@@ -63,8 +61,9 @@ public class User {
 	inverseJoinColumns=@JoinColumn(name="genre_id"))
 	private List<Genre> genres;
 	
-
-	// GETTERS | SETTERS | METHODS | CONSTRUCTORS
+	public User() {
+		super();
+	}
 
 	public List<Genre> getGenres() {
 		return genres;
@@ -72,10 +71,6 @@ public class User {
 
 	public void setGenres(List<Genre> genres) {
 		this.genres = genres;
-	}
-
-	public User() {
-		super();
 	}
 
 	public Integer getId() {
@@ -191,8 +186,23 @@ public class User {
 			content.removeUser(this);
 		}
 	}
-
-	// toString
+	
+	public void addGenre(Genre genre) {
+		if (this.genres == null) {
+			this.genres  = new ArrayList<>();
+		}
+		if(! this.genres .contains(genre)) {
+			this.genres .add(genre);
+			genre.addUser(this);
+		}
+	}
+	
+	public void removeGenre(Genre genre) {
+		if (this.genres  != null && this.genres .contains(genre)) {
+			this.genres.remove(genre);
+			genre.removeUser(this);
+		}
+	}
 
 	@Override
 	public String toString() {
@@ -201,7 +211,5 @@ public class User {
 				+ age + ", description=" + description + ", isActive=" + isActive + ", adminPrivleges=" + adminPrivleges
 				+ " genres" + this.genres + " contents" + this.contents + "]";
 	}
-
-
 
 }
