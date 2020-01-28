@@ -1,5 +1,8 @@
 package com.skilldistillery.HuluAndHang.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,7 @@ import com.skilldistillery.HuluAndHang.data.ContentDAO;
 import com.skilldistillery.HuluAndHang.data.UserDAO;
 import com.skilldistillery.HuluAndHang.data.GenreDAO;
 import com.skilldistillery.HuluAndHang.entities.Content;
+import com.skilldistillery.HuluAndHang.entities.Genre;
 import com.skilldistillery.HuluAndHang.entities.User;
 
 @Controller
@@ -28,9 +32,8 @@ public class ContentController {
 	@RequestMapping(path = "movie.do")
 	public String movieList(HttpSession session, Model model) {
 //		list all films in the movielist.jsp page. DO NOT EDIT
-		model.addAttribute("contents", dao.findAll());
-//		need to list all genres for my filter by genre button		
-		model.addAttribute("genres", genreDAO.findAll());
+		model.addAttribute("contents", dao.findAll());	
+		session.setAttribute("genres", genreDAO.findAll());
 		return "movieList";
 	}
 
@@ -73,6 +76,13 @@ public class ContentController {
 		model.addAttribute("content", content);
 		model.addAttribute("user", user);
 		return "movieDisplay";
+	}
+	
+	@RequestMapping(path = "userHang.do")
+	public String userHang(@RequestParam Integer id, Model model) {		
+		User user = userDao.find(id);
+		model.addAttribute("user", user);
+		return "userHang";
 	}
 
 }
