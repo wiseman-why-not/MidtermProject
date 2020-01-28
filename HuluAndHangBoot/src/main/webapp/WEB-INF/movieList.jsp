@@ -23,7 +23,7 @@
 				<a href="movie.do" class="allContent">All Movies</a>
 
 				<form action="filterByGenre.do" method="get" name="filterMoviesForm">
-<<<<<<< HEAD
+
 				<input list="genres" name="genreName" placeholder="Genre">
 				<datalist id="genres">
 					<c:forEach var="genre" items="${genres}">
@@ -31,14 +31,14 @@
 					</c:forEach>
 				</datalist>
 				<button type="submit">Filter by Genre</button>
-=======
+
 					<select name="genreName">
 						<c:forEach var="genre" items="${genres }">
 							<option value="${genre.name }">${genre.name }</option>
 						</c:forEach>
 					</select>
 					<button type="submit">Filter by Genre</button>
->>>>>>> master
+
 				</form>
 
 				<form action="byKeyword.do" method="post">

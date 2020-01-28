@@ -181,9 +181,25 @@ section {
 }
 
 .genre-form button {
-	position: relative;
+	all: unset;
+	margin: 0 20px 0 0;
 }
 
 .genre-form p{
-	color: #000000;
+	color: #ffffff;
+	margin: 0;
+	font-size: 1.2em;
+}
+
+.genre-form svg{
+	position: inherit;
+	height: 20px;
+	width: 20px;
+}
+
+.genre-form {
+	padding: 0 10px 0 10px;
+	display: flex;
+	height: 30px;
+	align-items: center;
 }

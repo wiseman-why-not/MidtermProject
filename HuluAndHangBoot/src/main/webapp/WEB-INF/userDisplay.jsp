@@ -28,17 +28,19 @@
 									</svg>
 								</button>
 								<input type="hidden" value="${genre.id}" name="genreId" />
+								<p>${genre.name}</p>
 							</form>
-							<p>${genre.name}</p>
 						</div>
 					</c:if>
 					<c:if test="${!user.genres.contains(genre)}">
-						<div>
+						<div class="genre">
 							<form class="genre-form" action="addGenre.do" method="POST">
 								<input type="hidden" value="${genre.id}" name="genreId" />
-								<button></button>
+								<button>
+									<svg></svg>
+								</button>
+								<p>${genre.name}</p>
 							</form>
-							<p>${genre.name}</p>
 						</div>
 					</c:if>
 				</c:forEach>
