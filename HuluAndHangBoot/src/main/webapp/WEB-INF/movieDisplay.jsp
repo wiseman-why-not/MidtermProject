@@ -33,23 +33,25 @@
 			<c:forEach var="u"   items="${content.getUsers()}">
 			<c:if test="${user.id == u.id}">
 			<c:set var="favorite" value= "true" />
-			<p>Hulu and Hang with:</p>
+			<h3 class = "hangWith">Hulu & Hang with:</h3>
 			<c:forEach var="u"   items="${content.getUsers()}">
-			<h5><a href="userHang.do?id=${u.id}">${u.firstName} ${u.lastName} ${u.email}</a></h5>
+			
+			<div class="grid-container">
+  <div class="item1"><h5><a class = "atag" href="userHang.do?id=${u.id}">${u.username}</a></h5></div>
+  <div class="item2"><img class = "userImage" src="https://media-exp1.licdn.com/dms/image/C4E03AQG97yrPw3MYzw/profile-displayphoto-shrink_800_800/0?e=1585180800&v=beta&t=_hCmt8WlG6r37DZSNR96m9BBpAiXfM3cMwOWRt3uEw0" alt="User Profile pic" /></div>
+</div>
+<br>
+					
 			</c:forEach>
-			<form action="movieDislike.do" method="POST">
-			<input type="hidden" value="${content.id}" name="mid" />
-			<input type="hidden" value="${user.id}" name="userId" />
-			<input type="submit" value="Dislike: ${content.title}" />
-			</form> 
+			<nav class = like-dislike>
+			<h5><a href="movieDislike.do?userId=${user.id}&mid=${content.id}">Dislike: ${content.title}</a></h5> 
+			</nav>
 			</c:if>
 			</c:forEach>
 			<c:if test="${favorite == false}">
-			<form action="movieLike.do" method="POST">
-			<input type="hidden" value="${content.id}" name="mid" />
-			<input type="hidden" value="${user.id}" name="userId" />
-			<input type="submit" value="Like: ${content.title}" />
-			</form> 
+			<nav class = like-dislike>
+			<h5><a href="movieLike.do?userId=${user.id}&mid=${content.id}">Dislike: ${content.title}</a></h5> 
+			</nav> 
 			</c:if>
 			</div>
 			</section>
