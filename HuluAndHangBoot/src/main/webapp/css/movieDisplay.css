@@ -63,8 +63,8 @@
 
 .user-list {
     position: relative;  
-    height: 345px;
-    width: 420px;
+    height: 100%;
+    width: 800px;
     border-radius: 20px;
     margin-bottom: 10px;
     margin-left: 10px;
@@ -82,10 +82,10 @@
 }
 
 .image{
-max-width: 100%;
-  max-height: 100%;
-  margin: auto;
-  display: block;
+ border-radius: 50%;
+border: 1px solid #ffffff;
+width: 100px; 
+height: 100px;
 }
 
 
@@ -140,4 +140,57 @@ button {
     height: 30px;
 }
 
+.like-dislike {
+	display: flex;
+	justify-content: space-around;
+	margin-top: 20px;
+}
+
+.grid-container {
+  display: grid;
+  grid-column-gap: 10px;
+  grid-template-areas: 
+    "a b";
+  
+}
+
+.item1 {
+ grid-area: a;
+ margin-top: 30px;
+ align-self: start;
+}
+
+.item2 {
+ grid-area: b;
+ align-self: end;
+
+}
+
+.userImage {
+ width: 100px;
+ height: 100px;
+ border-radius: 50%;
+ border: 1px solid #ffffff;
+}
+
+.atag {color: green;}
+
+.hangWith {
+	
+	font-family: "Roboto";
+	font-weight: 500;
+	
+}
+
+.userHangName {
+	text-align: center;
+	font-family: roboto;
+}
+
+.userHangEmail {
+	text-align: center;
+	font-family: roboto;
+	color: green;
+	
+}
 

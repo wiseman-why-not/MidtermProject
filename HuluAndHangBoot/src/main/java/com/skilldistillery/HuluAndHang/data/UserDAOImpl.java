@@ -147,4 +147,34 @@ public class UserDAOImpl implements UserDAO {
 			return false;
 		}
 	}
+	@Override
+	public boolean deactivateAccount(Integer userId) {
+		
+		System.out.println("********************************** ID OF USER" + userId);
+		try {
+			User managedUser = em.find(User.class, userId);
+			// if user is not active set active status to false.
+			System.out.println("+++++++++++++++++++++++++++++++++" + managedUser.getIsActive());
+			managedUser.setIsActive(false);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+	@Override
+	public boolean reactivateAccount(Integer userId) {
+		
+		System.out.println("********************************** ID OF USER" + userId);
+		try {
+			User managedUser = em.find(User.class, userId);
+			// if user is not active set active status to true.
+			System.out.println("+++++++++++++++++++++++++++++++++" + managedUser.getIsActive());
+			managedUser.setIsActive(true);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+	
+	
 }
