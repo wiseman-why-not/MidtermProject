@@ -77,7 +77,7 @@
 				<c:forEach var="content" items="${user.contents}">
 				<div class="content-card">
 						<a href="movieDisplay.do?title=${content.title}">
-								<img class="content-image" src="https://image.tmdb.org/t/p/original${content.imageUrl}" alt="${content.title}" />
+								<img class="content-image" src="${content.imageUrl}" alt="${content.title}" />
 								<article class="content-details">
 									<h3>${content.title}</h3>
 									<p>${content.description}</p>
