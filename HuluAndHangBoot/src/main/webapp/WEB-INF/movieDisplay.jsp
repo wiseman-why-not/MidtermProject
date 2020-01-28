@@ -12,10 +12,10 @@
 	crossorigin="anonymous">
 <jsp:include page="topStyle.jsp"></jsp:include>
 <link rel="stylesheet" href="./css/movieDisplay.css">
+<jsp:include page="header.jsp"></jsp:include>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
-<jsp:include page="header.jsp"></jsp:include>
 
 <section class="trailer">
 <iframe width="420" height="345" src="https://www.youtube.com/embed/${content.trailerUrl}">
@@ -50,6 +50,13 @@
 <c:if test="${favorite == false}">
 <nav>
 <h5><a href="movieLike.do?mid=${content.id}&userId=${user.id}">Like: ${content.title}</a></h5>
+<nav>
+<h5><a href="movieDislike.do?userId=${user.id}&mid=${content.id}">Dislike: ${content.title}</a></h5> 
+</nav>
+</c:if>
+<c:if test="${favorite == false}">
+<nav>
+<h5><a href="movieLike.do?userId=${user.id}&mid=${content.id}">Like: ${content.title}</a></h5> 
 </nav>
 </c:if>
 </div>
