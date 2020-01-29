@@ -37,9 +37,9 @@
 				<p style="text-align: center; font-size: 50">
 				 <br>
 				We are a social networking platform doing things a little differently! <br><br>
-				You tell us about your streaming preferences, and we’ll tell you who we think would be a good match!<br><br>
-				Whether you’re looking to watch and just chat, or “netflix and chill”, it’s all much easier with <br><br>
-				<p class="bottomlogo" style="text-align: center; font-size: 150">Hulu&Hang</p>
+				You tell us about your streaming preferences, and we’ll tell you who we think would be a good match for you!<br><br>
+				Whether you’re looking to watch and chat, or “Netflix™ and chill”, it’s all much easier with <br><br>
+				Hulu&Hang
 				</p>
 			</section>
 		</main>
