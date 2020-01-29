@@ -230,6 +230,23 @@ a:hover {
 	color: green;
 }
 
+
 .delete-button {
 	all: unset;
 }
+
+.emailInput {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	text-align: center;
+	font-family: roboto;
+	font-size: 20px;	
+	background-color: #72A4D2;
+}
+
+.emailButton{
+	margin-top: 10px;
+	margin-bottom: 10px;
+	text-align: center;
+}
+

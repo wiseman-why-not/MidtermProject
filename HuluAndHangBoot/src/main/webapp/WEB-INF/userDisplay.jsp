@@ -8,13 +8,22 @@
 		<title>Hulu&Hang</title>
 		<jsp:include page="topStyle.jsp"></jsp:include>
 		<link rel="stylesheet" href="./css/userStyle.css">
+		
 	</head>
 	<body>
 		<jsp:include page="header.jsp"></jsp:include>
 		<main class="container">
 			<section class="user-image">
 				<h3>${user.username}</h3>
-				<img src="https://media-exp1.licdn.com/dms/image/C4E03AQG97yrPw3MYzw/profile-displayphoto-shrink_800_800/0?e=1585180800&v=beta&t=_hCmt8WlG6r37DZSNR96m9BBpAiXfM3cMwOWRt3uEw0" alt="User Profile pic"width="20" height="20"/>
+				
+				<c:if test="${!empty user.imageURL }">				
+				<img src="${user.getImageURL() }" alt="User Profile pic"width="30" height="30"/>
+				</c:if>
+				
+				<c:if test="${empty user.imageURL }">				
+				<img src="https://media2.giphy.com/media/1TSI4ZfVAs2Rx4xJLS/source.gif" alt="User Profile pic"width="30" height="30"/>
+				</c:if>
+				
 			</section>
 			<section class="user-meta">
 				<c:forEach var="genre" items="${genres}">
