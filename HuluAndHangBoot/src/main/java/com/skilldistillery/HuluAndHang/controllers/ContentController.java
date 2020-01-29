@@ -54,7 +54,7 @@ public class ContentController {
 		Content content = dao.findByTitle(title);
 		User user = (User) session.getAttribute("user");
 		model.addAttribute("content", content);
-		model.addAttribute("user", user);
+		model.addAttribute("user", userDao.find(user.getId()));
 		return "movieDisplay";
 	}
 
@@ -64,7 +64,7 @@ public class ContentController {
 		Content content = dao.findById(mid);
 		User user = userDao.find(userId);
 		model.addAttribute("content", content);
-		model.addAttribute("user", user);
+		model.addAttribute("user", userDao.find(user.getId()));
 		return "movieDisplay";
 	}
 
@@ -74,7 +74,7 @@ public class ContentController {
 		User user = userDao.find(userId);
 		Content content = dao.findById(mid);
 		model.addAttribute("content", content);
-		model.addAttribute("user", user);
+		model.addAttribute("user", userDao.find(user.getId()));
 		return "movieDisplay";
 	}
 	
