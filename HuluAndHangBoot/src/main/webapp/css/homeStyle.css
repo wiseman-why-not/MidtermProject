@@ -10,7 +10,10 @@
 
 h2 {
 	text-align: center;
+	font-size: 75px;
 }
+
+
 
 canvas {
 	position: absolute;
