@@ -32,12 +32,20 @@
 				</article>
 			</section>
 			
-		<!-- 	A list of all users -->
+		<!-- 	A list of all users
+		
+		<c:if test="${!empty user.imageURL }">				
+				<img src="${user.getImageURL() }" alt="User Profile pic"width="30" height="30"/>
+				</c:if>
+				
+				<c:if test="${empty user.imageURL }">				
+				<img src="https://media2.giphy.com/media/1TSI4ZfVAs2Rx4xJLS/source.gif" alt="User Profile pic"width="30" height="30"/>
+				</c:if> -->
 		
 			<section class="user-movies">
 						<c:forEach var="user" items="${users}">
 							<div class="content-card">
-								<img class="content-image" src="${user.imageURL}" alt="${user.firstName}" />
+								<img class="content-image" src="${user.getImageURL()}" alt="${user.firstName}" />
 								<h3>${user.firstName}</h3>
 								<c:if test="${user.isActive }">
 									<form action="deactivate.do" method="post">
