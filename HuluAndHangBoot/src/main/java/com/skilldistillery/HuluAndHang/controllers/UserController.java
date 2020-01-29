@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.skilldistillery.HuluAndHang.data.ContentDAO;
 import com.skilldistillery.HuluAndHang.data.GenreDAO;
 import com.skilldistillery.HuluAndHang.data.UserDAO;
-import com.skilldistillery.HuluAndHang.entities.Content;
 import com.skilldistillery.HuluAndHang.entities.Genre;
 import com.skilldistillery.HuluAndHang.entities.User;
 
@@ -92,7 +91,7 @@ public class UserController {
 			session.setAttribute("user", dao.createUser(user));
 			return "redirect:user.do";
 		} else {
-			return "createUser";
+			return "redirect:create.do";
 		}
 	}
 	

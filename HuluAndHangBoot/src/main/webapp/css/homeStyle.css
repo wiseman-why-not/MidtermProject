@@ -1,6 +1,7 @@
 .login {
 	position: relative;
 	display: flex;
+	z-index: 3;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
@@ -19,7 +20,7 @@ canvas {
 	position: absolute;
 	top: 0;
 	left: 0;
-	z-index: -1;
+	z-index: 2;
 }
 
 form {
@@ -47,4 +48,29 @@ input[type=submit] {
 
 a {
 	cursor: pointer;
+}
+
+hr {
+	border-top: 10px solid #02B075;
+	margin-bottom: 100px;
+}
+
+.site-descrip {
+	color: #02B075;
+	margin-bottom: 100px;
+}
+
+a {
+	color: #ffffff;
+	background-color: rgba(0,0,0, 0.5);
+	border-radius: 10px;
+	padding: 5px;
+	margin: 10px;
+	transition: 0.25s;
+}
+
+a:hover {
+	color: #ffffff;
+	background-color: #02B075;
+	text-decoration: none;
 }
