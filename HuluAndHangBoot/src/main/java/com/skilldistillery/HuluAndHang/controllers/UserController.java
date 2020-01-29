@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.skilldistillery.HuluAndHang.data.ContentDAO;
 import com.skilldistillery.HuluAndHang.data.GenreDAO;
 import com.skilldistillery.HuluAndHang.data.UserDAO;
-import com.skilldistillery.HuluAndHang.entities.Content;
 import com.skilldistillery.HuluAndHang.entities.Genre;
 import com.skilldistillery.HuluAndHang.entities.User;
 
@@ -62,12 +61,14 @@ public class UserController {
 	public String deactivateUser(HttpSession session, Model model, Integer userId) {
 		dao.deactivateAccount(userId);
 		model.addAttribute("users", dao.findAll());
+		model.addAttribute("contents", contentDao.findAll());
 		return "adminPage";
 	}
 	@RequestMapping(path = "reactivate.do")
 	public String reactivateUser(HttpSession session, Model model, Integer userId) {
 		dao.reactivateAccount(userId);
 		model.addAttribute("users", dao.findAll());
+		model.addAttribute("contents", contentDao.findAll());
 		return "adminPage";
 	}
 
@@ -92,19 +93,20 @@ public class UserController {
 			session.setAttribute("user", dao.createUser(user));
 			return "redirect:user.do";
 		} else {
-			return "createUser";
+			return "redirect:create.do";
 		}
 	}
 	
 	@RequestMapping(path = "login.do")
-	public String checkLoginInfo(String password, String userName,  HttpSession session){
+	public String checkLoginInfo(String password, String userName,  HttpSession session, Model model){
 		System.out.println(password + " " + userName);
 		User user = dao.findByLogin(userName, password);
-		if(user == null) {
-			return "index";
-		} else {
+		if(user != null && user.getIsActive()) {
 			session.setAttribute("user", user);
 			return "redirect:user.do";
+		} else {
+			model.addAttribute("loginFail", true);
+			return "index";
 		}
 	}
 	

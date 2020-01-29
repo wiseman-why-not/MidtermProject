@@ -41,6 +41,7 @@
   				</div>
   				<input type="submit" value="Create" />
 			</form>
+			<a href="/home.do">log in</a>
 		</main>
 		<jsp:include page="footer.jsp"></jsp:include>
 		<jsp:include page="bottomScript.jsp"></jsp:include>
