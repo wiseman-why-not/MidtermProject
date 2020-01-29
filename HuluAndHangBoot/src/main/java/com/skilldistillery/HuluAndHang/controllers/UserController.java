@@ -98,6 +98,7 @@ public class UserController {
 	
 	@RequestMapping(path = "login.do")
 	public String checkLoginInfo(String password, String userName,  HttpSession session){
+		System.out.println(password + " " + userName);
 		User user = dao.findByLogin(userName, password);
 		if(user == null) {
 			return "index";

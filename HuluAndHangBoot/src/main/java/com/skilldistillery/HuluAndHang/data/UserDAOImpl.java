@@ -1,13 +1,9 @@
 package com.skilldistillery.HuluAndHang.data;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
@@ -31,11 +27,13 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public User findByLogin(String username, String password) {
 		String query = "SELECT user FROM User user WHERE user.username = :username AND user.userPassword = :password";
+		System.out.println(query);
 		try {
 			User user = em.createQuery(query, User.class)
 					.setParameter("username", username)
 					.setParameter("password", password)
 					.getSingleResult();
+			System.out.println("hello im after the create query");
 			user.getContents();
 			user.getGenres();
 			return user;
