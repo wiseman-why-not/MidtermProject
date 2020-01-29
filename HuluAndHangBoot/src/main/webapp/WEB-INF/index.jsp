@@ -28,9 +28,15 @@
 				<a href="create.do">Create User</a>
 			</section>
 			<canvas></canvas>
-			<section>
-				<h2>description</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec posuere tellus. Fusce varius urna ante, quis venenatis sapien fringilla non. Nam tempor, eros fermentum finibus sagittis, nibh urna commodo metus, id fermentum purus libero bibendum mi. Nullam nec purus fermentum, molestie lorem id, ornare lorem. Donec aliquet nisl sed sagittis dictum. Donec imperdiet tempor dui. Phasellus non justo a leo commodo vestibulum quis et purus.</p>
+			<section style="color:#7ff3bc;">
+				<h2 >Welcome to Hulu&Hang!</h2>
+				<p style="text-align: center; font-size: 50">
+				 <br>
+				We are a social networking platform doing things a little differently! <br><br>
+				You tell us about your streaming preferences, and we’ll tell you who we think would be a good match!<br><br>
+				Whether you’re looking to watch and just chat, or “netflix and chill”, it’s all much easier with <br><br>
+				<p class="bottomlogo" style="text-align: center; font-size: 150">Hulu&Hang</p>
+				</p>
 			</section>
 		</main>
 		<jsp:include page="footer.jsp"></jsp:include>
