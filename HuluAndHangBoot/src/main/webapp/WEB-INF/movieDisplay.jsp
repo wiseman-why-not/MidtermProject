@@ -19,7 +19,7 @@
 			
 			<section class="movie-image">
 			
-			<img  width="420" height="345" src="https://image.tmdb.org/t/p/original${content.imageUrl}">
+			<img  width="420" height="345" src="${content.imageUrl}">
 			
 			</section>
 			
