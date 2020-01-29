@@ -50,6 +50,9 @@ public class User {
 	@Column(name = "admin_privledges")
 	private Boolean adminPrivleges = false;
 	
+	@Column(name = "image_url")
+	private String imageURL;
+	
 	@ManyToMany(mappedBy = "users")
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Content> contents;
@@ -63,6 +66,14 @@ public class User {
 	
 	public User() {
 		super();
+	}
+
+	public String getImageURL() {
+		return imageURL;
+	}
+
+	public void setImageURL(String imageURL) {
+		this.imageURL = imageURL;
 	}
 
 	public List<Genre> getGenres() {
@@ -209,7 +220,7 @@ public class User {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", username=" + username
 				+ ", userPassword=" + userPassword + ", phoneNumber=" + phoneNumber + ", email=" + email + ", age="
 				+ age + ", description=" + description + ", isActive=" + isActive + ", adminPrivleges=" + adminPrivleges
-				+ " genres" + this.genres + " contents" + this.contents + "]";
+				+ ", imageURL=" + imageURL + ", contents=" + contents + ", genres=" + genres + "]";
 	}
 
 }
