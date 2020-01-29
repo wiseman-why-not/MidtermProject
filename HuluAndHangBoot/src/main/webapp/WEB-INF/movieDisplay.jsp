@@ -33,8 +33,8 @@
 					<h3>Matches</h3>
 					<c:forEach var="user" items="${content.users}">
 						<a class="user-card" href="userHang.do?id=${user.id}">
-								 <h5>${user.username}</h5>
-								 <img class = "user-image" src="https://media-exp1.licdn.com/dms/image/C4E03AQG97yrPw3MYzw/profile-displayphoto-shrink_800_800/0?e=1585785600&v=beta&t=1Y3F6xHiDvnfEhiGeCC1ByY6Aj-srmKhDe4DqB4fMJQ" alt="User Profile pic" />
+							<h5>${user.username}</h5>
+							<img class = "user-image" src="${user.imageURL}" alt="User Profile pic" />
 						</a>
 					</c:forEach>
 				</section>
