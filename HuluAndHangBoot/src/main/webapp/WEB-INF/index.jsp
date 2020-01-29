@@ -23,7 +23,7 @@
     					<label for="password">Password</label>
     					<input type="password" name="password" id="password" class="form-control">
   					</div>
-  					<c:if test="${correctInput}">
+  					<c:if test="${loginFail}">
   						<p class="input-error">Incorrect Username/PassWord</p>
   					</c:if>
   					<input type="submit" value="Log In"/>
