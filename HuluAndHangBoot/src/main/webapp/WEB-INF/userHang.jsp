@@ -6,9 +6,14 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>User Hang</title>
+		<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
 		<jsp:include page="topStyle.jsp"></jsp:include>
 		
 		<link rel="stylesheet" href="./css/userStyle.css">
+		<script src="./js/copyEmail.js"></script>
 	</head>
 	<body>
 		<jsp:include page="header.jsp"></jsp:include>
@@ -20,7 +25,12 @@
 			</section>
 			<section class="user-meta">
 			<div class = "userHangName">${user.firstName} ${user.lastName}</div>
-			<div class = "userHangEmail">${user.email}</div>
+			<div class = "emailButton">
+			<input class = "emailInput" type="text" value="${user.email}" id="email">
+
+			<button class="btn btn-primary" onclick="userEmail()">Copy Email</button>
+			</div>
+			
 			<c:if test="${empty user.genres}">
 						<p>genres is empty</p>					
 					</c:if>

@@ -8,6 +8,7 @@
 		<title>Hulu&Hang</title>
 		<jsp:include page="topStyle.jsp"></jsp:include>
 		<link rel="stylesheet" href="./css/userStyle.css">
+		
 	</head>
 	<body>
 		<jsp:include page="header.jsp"></jsp:include>
