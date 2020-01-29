@@ -231,6 +231,10 @@ a:hover {
 }
 
 
+.delete-button {
+	all: unset;
+}
+
 .emailInput {
 	margin-top: 10px;
 	margin-bottom: 10px;
