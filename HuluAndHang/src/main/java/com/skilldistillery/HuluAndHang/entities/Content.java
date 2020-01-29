@@ -14,6 +14,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 public class Content {
@@ -45,12 +47,14 @@ public class Content {
 	private LocalDateTime createDate;
 	
 	@ManyToMany
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@JoinTable(name="genre_content",
 	joinColumns = @JoinColumn(name = "content_id"),
 	inverseJoinColumns=@JoinColumn(name="genre_id"))
 	private List<Genre> genres;
 	
 	@ManyToMany
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@JoinTable(name="favorite_content",
 	joinColumns = @JoinColumn(name ="content_id"),
 	inverseJoinColumns = @JoinColumn(name="user_id"))

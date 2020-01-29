@@ -229,3 +229,7 @@ a:hover {
 	font-size: 20px;
 	color: green;
 }
+
+.delete-button {
+	all: unset;
+}
