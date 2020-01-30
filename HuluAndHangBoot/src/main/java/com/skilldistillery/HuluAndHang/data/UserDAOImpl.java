@@ -44,6 +44,9 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public User createUser(User user) {
+		if (user.getImageURL() == null) {
+			user.setImageURL("https://i.imgur.com/68R2JIk.gif");
+		}
 		em.persist(user);
 		return user;
 	}
