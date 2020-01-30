@@ -93,6 +93,7 @@ h2 {
 
 .user-image {
 	height: 150px;
+	width: 150px;
 	border: 1px solid #ffffff;
 	border-radius: 50%;
 }

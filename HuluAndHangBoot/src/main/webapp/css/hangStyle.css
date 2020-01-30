@@ -9,58 +9,6 @@ main {
 		"userMeta movieList"
 }
 
-.description-form {
-	height: 180px;
-}
-
-.user-meta h3 {
-	text-align: center;
-}
-
-svg {
-	position: absolute;
-	top: 5px;
-	right: 5px;
-	fill: #ffffff;
-	height: 40px;
-	width: 40px;
-	cursor: pointer;
-	transition: 0.25s;
-	border: 1px solid #ffffff;
-	border-radius: 10px;
-	padding: 5px;
-}
-
-svg:hover {
-	fill: #5f0a87;
-	border: 1px solid #5f0a87;
-}
-
-textarea {
-	height: 100%;
-	width: 90%;
-	padding: 0;
-	margin: 0;
-	color: #ffffff;
-	background: none;
-	resize: none;
-	border-style: none; 
-    border-color: Transparent; 
-    overflow: auto;
-    outline: none;
-}
-
-.edit-description-section {
-	display: none;
-}
-
-.user-image img {
-	height: 150px;
-	width: 150px;
-	border-radius: 50%;
-	border: 1px solid #ffffff;
-}
-
 section {
 	color: #ffffff;
 }
@@ -79,12 +27,25 @@ section {
 	box-shadow: 1px 1px 17px -2px #727272;
 }
 
+.user-image img {
+	height: 150px;
+	width: 150px;
+	border-radius: 50%;
+	border: 1px solid #ffffff;
+}
+
+
 
 .user-meta {
+	grid-area: userMeta;
+}
+
+.user-meta article {
+	padding: 10px;
+	min-height: 100px;
 	border-radius: 10px;
 	background-color: #4dbeff;
 	background-image: linear-gradient(315deg, #4dbeff 0%, #009ffd 74%);
-	grid-area: userMeta;
 	box-shadow: 1px 1px 17px -2px #727272;
 }
 
@@ -107,15 +68,6 @@ section {
 
 .user-movies {
 	grid-area: movieList;
-}
-
-a {
-	color: #ffffff;
-}
-
-a:hover {
-	color: #ffffff;
-	text-decoration: none;
 }
 
 .content-card {
@@ -151,6 +103,15 @@ a:hover {
 	box-shadow: inset -50px 0px 50px -30px #5f0a87;
 }
 
+.content-image {
+	width: 60%;
+	position: absolute;
+	z-index: 0;
+	opacity: 0.5;
+	transform: rotate(25deg) translate(-40%, -20%);
+	box-shadow: inset -50px 0px 50px -30px #5f0a87;
+}
+
 .content-details {
 	position: relative;
 	padding: 10px;
@@ -165,88 +126,27 @@ a:hover {
 	overflow: hidden;
 }
 
-.description-section {
-	 height: 100%;
-}
-
-.add-description-button {
-	margin: 10px;
-	border-radius: 10px;
-	color: #7ff3bc;
-	border: 1px solid #7ff3bc;
-	padding: 5px;
-	font-weight: bold;
-	background-color: transparent;
-}
-
-.no-description {
-	 height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.genre-form button {
-	all: unset;
-	margin: 0 20px 0 0;
-}
-
-.genre-form p{
+a {
 	color: #ffffff;
-	margin: 0;
-	font-size: 1.2em;
 }
 
-.genre-form svg{
-	position: inherit;
-	height: 20px;
-	width: 20px;
+a:hover {
+	color: #ffffff;
+	text-decoration: none;
 }
 
-.genre-form {
-	padding: 0 10px 0 10px;
+.user-meta p {
+	font-size: 1.5em;
+	text-align: center;
+}
+
+#email {
+	position: absolute;
+	z-index: -1;
+}
+
+.emailButton {
 	display: flex;
-	height: 30px;
-	align-items: center;
+    flex-direction: column;
+    margin-bottom: 50px;
 }
-
-.userHangName{
-	text-align: center;
-	font-family: roboto;
-	font-size: 20px;	
-}
-
-.userHangEmail{
-	text-align: center;
-	font-family: roboto;
-	font-size: 20px;
-	color: green;
-}
-
-
-.delete-button {
-	all: unset;
-}
-
-.emailInput {
-	margin-top: 10px;
-	margin-bottom: 10px;
-	text-align: center;
-	font-family: roboto;
-	font-size: 20px;	
-	background-color: #72A4D2;
-}
-
-.emailButton{
-	margin-top: 10px;
-	margin-bottom: 10px;
-	text-align: center;
-}
-
-.content-card article:first-child {
-	display: flex;
-    justify-content: space-between;
-    width: 40%;
-    align-items: center;
-}
-
