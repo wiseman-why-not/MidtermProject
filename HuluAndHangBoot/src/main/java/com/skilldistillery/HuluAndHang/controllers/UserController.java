@@ -124,6 +124,13 @@ public class UserController {
 		return "redirect:user.do";
 	}
 	
+	@RequestMapping(path = "adminupdateDescription.do")
+	public String AdminUpdateUserDescription(String description,int userId) {
+		User user = dao.find(userId);
+		dao.updateUserDescription(user, description);
+		return "redirect:user.do";
+	}
+	
 	@RequestMapping(path = "deleteFilmFromHome.do")
 	public String deleteFilmFromHome(int filmId,  HttpSession session) {
 		dao.removeFilmFromFavorites(filmId, ((User)session.getAttribute("user")).getId());
