@@ -71,3 +71,9 @@
 
 
 ## Lessons Learned
+
+How to keep all of the team members in a productive position on the project. 
+
+We are all more comfortable working with branches on github. 
+
+Structuring and accessing the database became much easier. 
